@@ -1,6 +1,6 @@
 home:
     resource: "@HomeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /home
 
 app:
     resource: '@AppBundle/Controller/'
