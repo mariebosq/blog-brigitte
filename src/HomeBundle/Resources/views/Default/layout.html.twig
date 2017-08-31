@@ -2,23 +2,44 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{{ asset('assets/public/css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('assets/public/css/font-awesome.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('assets/public/css/normalize.css') }}" />
+		<link rel="stylesheet" href="{{ asset('assets/public/css/style.css') }}" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster+Two" />
+		<link rel="stylesheet" href="{{ asset('assets/public/js/bootstrap.min.js') }}" />
+
 		<title>Brigitte Joseph-Jeanneney</title>
 	</head>
 
 	<body>
-
 		<header class="container">
-			<img src="" alt="Photo de Brigitte Joseph-Jeanneney">
+			<a href="{{ url('home_homepage') }}"><img src="{{ asset('assets/public/images/BJ.jpg') }}" alt="Photo de Brigitte Joseph-Jeanneney" /></a>
 			<h1>Brigitte Joseph-Jeanneney</h1>
-			<p>Écrivaine</p>
+			<p id="job">Écrivaine</p>
 
-			<nav>
-				<a href="#">Ma vie</a>
-				<a href="#">Mes écrits</a>
-				<a href="#">En images</a>
-				<a href="#">On en a parlé...</a>
-				<a href="#">Actualités</a>
+			<nav class="row">
+				<a href="#" class="col-lg-offset-1 col-xs-12 col-lg-2">
+					<i class="fa fa-university" aria-hidden="true"></i>
+					Ma vie
+				</a>
+				<a href="#" class="col-xs-12 col-lg-2">
+					<i class="fa fa-book" aria-hidden="true"></i>
+					Mes écrits
+				</a>
+				<a href="#" class="col-xs-12 col-lg-2">
+					<i class="fa fa-picture-o" aria-hidden="true"></i>
+					En images
+				</a>
+				<a href="#" class="col-xs-12 col-lg-2">
+					<i class="fa fa-newspaper-o" aria-hidden="true"></i>
+					On en a parlé...
+				</a>
+				<a href="#" class="col-xs-12 col-lg-2">
+					<i class="fa fa-calendar" aria-hidden="true"></i>
+					Actualités
+				</a>
 			</nav>
 		</header>
 
@@ -29,25 +50,33 @@
 
     	<footer>
     		<section id="info">
-				<article>
-					<small><a href="https://www.fnac.com/SearchResult/ResultList.aspx?SCat=0%211&Search=brigitte+joseph-janneney&sft=1&sa=0">Fnac</a></small>
-				</article>
-				<article>
-					<small><a href="https://www.amazon.fr/s/ref=nb_sb_noss?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=brigitte+joseph-jeanneney">Amazon</a></small>
-				</article>
-				<article>
-					<small><a href="https://www.babelio.com/resrecherche.php">Babelio</a></small>
-				</article>
+				<h2>Commandez mes ouvrages</h2>
+				<a href="https://www.fnac.com/SearchResult/ResultList.aspx?SCat=0%211&Search=brigitte+joseph-janneney&sft=1&sa=0">Fnac</a>
+				
+				<a href="https://www.amazon.fr/s/ref=nb_sb_noss?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=brigitte+joseph-jeanneney">Amazon</a>
+				
+				<a href="https://www.babelio.com/livres/Joseph-Jeanneney-Nocturne-au-Louvre/939258">Babelio</a>
+				
 			</section>
 
-			<section id="contact">
-				<p><a href="mailto:brigitte.joseph.jeanneney@gmail.com">Contactez-moi !</p>
+			<section id="index">
+				<h2>Brigitte Joseph-Jeanneney</h2>
+				<a href="{{ url('home_homepage') }}">Accueil</a>
+				<a href="#">Mes écrits</a>
+				<a href="#">En images</a>
 			</section>
 
-			<small>
+			<section id="follow">
+				<h2>Suivez-moi</h2>
+				<a href="#">Ma vie</a>
+				<a href="#">On en a parlé...</a>
+				<a href="#">Actualités</a>
+				<a href="mailto:brigitte.joseph.jeanneney@gmail.com">Contact</a>
+			</section>
+
+			<small id="licence">
 				Brigitte Joseph-Jeanneney © 2017 | Écrivaine
 			</small>
     	</footer>
-
 	</body>
 </html>
