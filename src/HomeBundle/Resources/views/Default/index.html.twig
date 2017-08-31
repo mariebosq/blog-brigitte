@@ -1,5 +1,58 @@
 {% extends "HomeBundle:Default:layout.html.twig" %}
 
 {% block body %}
-  Notre plateforme est un peu vide pour le moment, mais cela viendra !
+	<section id="description">
+		<h2>Ce que représente l'écriture pour moi</h2>
+		<img src="{{ asset('assets/public/images/BJJ.jpg') }}" alt="Photo de Brigitte Joseph-Jeanneney en plein discours">
+		<p id="description-first">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</section>
+
+	<section id="books">
+		<h2>Mes Livres</h2>
+		<article class="books">
+			<h3>Nocturne au Louvre</h3>
+			<img src="{{ asset('assets/public/images/Nocturne-au-Louvre.jpg') }}" alt="Photo de Nocturne au Louvre">
+			<p>Broché 23 mars 2017</p>
+			<p>de Brigitte Joseph Jeanneney (Auteur)</p>
+			<a class="btn" href="https://www.amazon.fr/Nocturne-au-louvre-Brigitte-Joseph-jeanneney/dp/2367490422/ref=sr_1_1?ie=UTF8&qid=1504106181&sr=8-1&keywords=brigitte+joseph+jeanneney">Voir ce produit</a>
+		</article>
+		<article class="books">
+			<h3>Lignages</h3>
+			<img src="{{ asset('assets/public/images/lignages.jpg') }}" alt="Photo de Brigitte Lignages">
+			<p>Broché 31 mai 2016</p>
+			<p>de Brigitte Joseph Jeanneney (Auteur)</p>
+			<a class="btn" href="https://www.amazon.fr/Lignages-Brigitte-Jeanneney/dp/2916724702/ref=sr_1_fkmr0_2?ie=UTF8&qid=1504106181&sr=8-2-fkmr0&keywords=brigitte+joseph+jeanneney">Voir ce produit</a>
+		</article>
+		<article class="books">
+			<h3>Ca s'appelle aimé</h3>
+			<img src="{{ asset('assets/public/images/breves.jpg') }}" alt="Photo de Ca s'appelle aimer">
+			<p>Broché 20 avril 2015</p>
+			<p>de Brigitte Joseph Jeanneney (Auteur)</p>
+			<a class="btn" href="https://www.amazon.fr/Ca-sappelle-aimer-Brigitte-Joseph-Jeanneney/dp/2916724621/ref=sr_1_3?ie=UTF8&qid=1504106181&sr=8-3&keywords=brigitte+joseph+jeanneney">Voir ce produit</a>
+		</article>
+		<article class="books">
+			<h3>Autour du malade: La famille, le médecin et la psychologue</h3>
+			<img src="{{ asset('assets/public/images/malade.jpg') }}" alt="Photo de Autour du malade: La famille, le médecin et la psychologue">
+			<p>Broché 19 décembre 2012</p>
+			<p>de Jeanne-Marie Bréchot (Auteur), Brigitte Joseph-Jeanneney (Auteur), Martine Ruszniewski (Auteur)</p>
+			<a class="btn" href="https://www.amazon.fr/Autour-malade-Famille-m%C3%A9decin-psychologue/dp/2738112005/ref=sr_1_2?ie=UTF8&qid=1504106181&sr=8-2&keywords=brigitte+joseph+jeanneney">Voir ce produit</a>
+		</article>
+	</section>
 {% endblock %}
