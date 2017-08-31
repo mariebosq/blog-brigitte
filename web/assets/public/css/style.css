@@ -1,0 +1,210 @@
+/*LAYOUT*/
+/*GLOBAL */
+html {
+	font-size: 62.5%
+}
+
+body {
+	font-family: "Open Sans", Arial, sans-serif;
+	color: #666;
+	font-size: 1.6rem;
+	color: black;
+}
+
+main {
+	width: 80%;
+	margin: auto;
+}
+
+h1, h2, h3 {
+	font-family: 'Lobster Two', cursive;
+	color: rgb(119, 244, 215);
+	margin-bottom: 30px;
+}
+
+/*HEADER*/
+header img {
+	width: 100px;
+	border-radius: 50%;
+	float: left;
+	margin-top: 65px;
+	margin-right: 20px;
+}
+
+header h1 {
+	font-size: 10rem;
+}
+
+header #job {
+	display: block;
+	text-align: center;
+	font-size: 2rem;
+}
+
+#job::before, #job::after {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#job::before, #job::after {
+	height: 1px;
+	width: 80px;
+	background: black;
+	content: "";
+	margin: 0px 10px;
+}
+
+.row {
+	border-top: 1px solid #DCDCDC;
+	border-bottom: 1px solid #DCDCDC;
+	text-align: center;
+	margin: 30px;
+}
+
+.col-lg-2 {
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+	color: black;
+	padding: 15px;
+}
+
+.col-lg-2:hover {
+	-webkit-transform: scale(1.3);
+	        -ms-transform: scale(1.3);
+	    transform: scale(1.3);
+	transition: all 0.3s ease 0s;
+	text-decoration: none;
+	color: rgb(119, 244, 215);
+}
+
+nav a .fa {
+	display: block;
+	margin-bottom: 5px;
+}
+
+/*FOOTER*/
+footer {
+	background-color: #DCDCDC;
+}
+
+footer #info, #index, #follow {
+	display: inline-block;
+	width: 33%;
+	text-align: center;
+	border-top: 1px solid #DCDCDC;
+	border-bottom: 1px solid #DCDCDC;
+	vertical-align: top;
+}
+
+footer #info h2, #index h2, #follow h2 {
+	margin-bottom: 10px;
+	color: black;
+	font-size: 2.5rem;
+}
+
+footer #info a, #index a, #follow a {
+	display: block;
+	color: black;
+	text-decoration: none;
+	padding: 10px;
+}
+
+footer #info a:hover, #index a:hover, #follow a:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: black;
+	font-weight: bold;
+}
+
+
+footer #licence {
+	display: block;
+	text-align: center;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/*INDEX*/
+/*MAIN*/
+#description img {
+	width: 25%;
+	float: left;
+	margin-right: 25px;
+	margin-bottom: 5px;
+}
+
+
+#description p {
+	line-height: 25pt;
+}
+
+.books {
+	display: inline-block;
+	width: 24%;
+	text-align: center;
+	padding: 10px 25px;
+}
+
+.books img {
+	width: 50%;
+	margin-bottom: 40px;
+}
+
+.btn {
+	background-color: rgb(119, 244, 215);
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 15px 20px;
+	margin: 10px 0;
+	text-align: center;
+}
+
+.btn:hover {
+	background-color: rgba(119, 244, 215, 0.2);
+	color: rgb(119, 244, 215);
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 1024px) {
+	/*GENERAL*/
+	header img, #description img {
+		display: block;
+		float: none;
+		margin: 10px auto;
+	}
+
+	/*LAYOUT*/
+	header h1 {
+		font-size: 5rem;
+		text-align: center;
+	}
+
+	.row {
+		border: none;
+	}
+
+	.col-xs-12 {
+		border-top: 1px solid #DCDCDC;
+		border-bottom: 1px solid #DCDCDC;
+	}
+
+	footer #info, #index, #follow {
+		display: block;
+		width: 100%;
+	}
+	/*INDEX*/
+	h2 {
+		text-align: center;
+	}
+
+	#description p {
+		text-align: justify;
+	}
+
+	.books {
+		width: 100%;
+	}
+}
+
