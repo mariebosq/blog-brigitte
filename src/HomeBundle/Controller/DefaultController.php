@@ -15,4 +15,8 @@ class DefaultController extends Controller
     {
       return $this->render('HomeBundle:Default:life.html.twig');
     }
+    public function writingAction()
+    {
+      return $this->render('HomeBundle:Default:writing.html.twig');
+    }
 }
