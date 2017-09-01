@@ -168,7 +168,7 @@ footer #licence {
 /*RESPONSIVE*/
 @media screen and (max-width: 1024px) {
 	/*GENERAL*/
-	header img, #description img {
+	header img, #description img, #autobiography img {
 		display: block;
 		float: none;
 		margin: 10px auto;
@@ -198,7 +198,7 @@ footer #licence {
 		text-align: center;
 	}
 
-	#description p {
+	#description p, #autobiography p {
 		text-align: justify;
 	}
 
