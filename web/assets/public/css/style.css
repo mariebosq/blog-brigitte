@@ -86,6 +86,7 @@ nav a .fa {
 /*FOOTER*/
 footer {
 	background-color: #DCDCDC;
+	margin-top: 20px;
 }
 
 footer #info, #index, #follow {
@@ -124,10 +125,8 @@ footer #licence {
 	background-color: rgba(255, 255, 255, 0.2);
 }
 
-
-/*INDEX*/
 /*MAIN*/
-#description img {
+#description img, #autobiography img {
 	width: 25%;
 	float: left;
 	margin-right: 25px;
@@ -135,7 +134,7 @@ footer #licence {
 }
 
 
-#description p {
+#description p, #autobiography p {
 	line-height: 25pt;
 }
 
@@ -207,4 +206,3 @@ footer #licence {
 		width: 100%;
 	}
 }
-
