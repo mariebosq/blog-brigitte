@@ -126,7 +126,7 @@ footer #licence {
 }
 
 /*MAIN*/
-#description img, #autobiography img {
+#description img, #autobiography img, .description-book img {
 	width: 25%;
 	float: left;
 	margin-right: 25px;
@@ -134,7 +134,7 @@ footer #licence {
 }
 
 
-#description p, #autobiography p {
+#description p, #autobiography p, #description-books p {
 	line-height: 25pt;
 }
 
@@ -163,6 +163,21 @@ footer #licence {
 .btn:hover {
 	background-color: rgba(119, 244, 215, 0.2);
 	color: rgb(119, 244, 215);
+}
+
+.descriptionbook img {
+	width: 25%;
+	float: right;
+	margin-right: 25px;
+	margin-bottom: 5px;
+}
+
+.btn-infos {
+	text-align: left;
+}
+
+.descriptionbook p, .descriptionbook h3 {
+	text-align: right;
 }
 
 /*RESPONSIVE*/
