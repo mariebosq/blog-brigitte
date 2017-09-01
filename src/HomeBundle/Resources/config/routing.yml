@@ -5,3 +5,7 @@ home_homepage:
 home_lifepage:
     path:     /life
     defaults: { _controller: HomeBundle:Default:life }
+
+home_writingpage:
+    path:     /writing
+    defaults: { _controller: HomeBundle:Default:writing }
