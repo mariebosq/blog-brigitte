@@ -25,11 +25,8 @@ class DefaultController extends Controller
 
     // On crée le FormBuilder grâce au service form factory
     $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
-      ->add('publishedAt',      DateType::class)
       ->add('createdAt',      DateType::class)
-      ->add('updatedAt',      DateType::class)
       ->add('title',     TextType::class)
-      ->add('slug',     TextType::class)
       ->add('content',   TextareaType::class)
       //->add('published', CheckboxType::class, array('required' => false))
       ->add('save',      SubmitType::class)
@@ -53,7 +50,7 @@ class DefaultController extends Controller
         $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
         // On redirige vers la page de visualisation de l'annonce nouvellement créée
-        return $this->redirectToRoute('admin_homepage', array('id' => $advert->getId()));
+        return $this->redirectToRoute('admin_homepage', array('id' => $article->getId()));
       }
     }
 
