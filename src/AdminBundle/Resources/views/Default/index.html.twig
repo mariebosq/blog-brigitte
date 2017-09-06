@@ -1,5 +1,9 @@
 {% extends "AdminBundle:Default:layout.html.twig" %}
 
 {% block body %}
-  En cours de construction
+  <ul>
+      {% for article in listArticles %}
+        <li>{{ article.getContent() }}</li>
+      {% endfor %}
+  </ul>
 {% endblock %}
