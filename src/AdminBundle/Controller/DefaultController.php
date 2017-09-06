@@ -23,7 +23,7 @@ class DefaultController extends Controller
 
         $listArticles = $repository->findAll();
 
-        return $this->render('AdminBundle:Default:index.html.twig');
+        return $this->render('AdminBundle:Default:index.html.twig', array('listArticles' => $listArticles));
     }
 
     public function articleAction($id)
