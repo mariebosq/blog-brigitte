@@ -5,3 +5,7 @@ admin_homepage:
 admin_formpage:
     path:     /form
     defaults: { _controller: AdminBundle:Default:add }
+
+admin_articlepage:
+    path:     /article/{id}
+    defaults: { _controller: AdminBundle:Default:article }
