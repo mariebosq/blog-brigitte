@@ -15,7 +15,24 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+        $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('AdminBundle:Article')
+        ;
+
+        $listArticles = $repository->findAll();
+
         return $this->render('AdminBundle:Default:index.html.twig');
+    }
+
+    public function articleAction($id)
+    {
+        $repository = $this->getDoctrine()->getRepository('AdminBundle:Article');
+
+        $article = $repository->find($id);
+
+        return $this->render('AdminBundle:Default:article.html.twig', array('article' => $article));
     }
 
     public function addAction(Request $request)
@@ -50,7 +67,7 @@ class DefaultController extends Controller
         $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
         // On redirige vers la page de visualisation de l'annonce nouvellement créée
-        return $this->redirectToRoute('admin_homepage', array('id' => $article->getId()));
+        return $this->redirectToRoute('admin_articlepage', array('id' => $article->getId()));
       }
     }
 
