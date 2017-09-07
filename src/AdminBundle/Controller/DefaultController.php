@@ -78,4 +78,47 @@ class DefaultController extends Controller
       'form' => $form->createView(),
     ));
   }
+
+  public function editAction($id)
+  {
+    $request = $this->get('request');
+
+    if (is_null($id)) {
+        $postData = $request->get('Article');
+        $id = $postData['id'];
+    }
+
+    $em = $this->getDoctrine()->getEntityManager();
+    $article= $em->getRepository('AdminBundle:Article')->find($id);
+    $form = $this->createForm(new ArticleType(), $article);
+
+    if ($request->getMethod() == 'POST') {
+        $form->bindRequest($request);
+
+        if ($form->isValid()) {
+            // perform some action, such as save the object to the database
+            $em->flush();
+
+            return $this->redirectToRoute('admin_articlepage');
+        }
+    }
+
+    return $this->render('AdminBundle:Default:edit.html.twig', array(
+        'form' => $form->createView()
+    ));
+  }
+
+  public function deleteAction(Article $article)
+  {
+      $em = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('AdminBundle:Article')
+      ;
+
+      $em->remove($article);
+      $em->flush();
+
+      return $this->render('AdminBundle:Default:delete.html.twig');
+  }
 }
