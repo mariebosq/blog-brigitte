@@ -9,3 +9,11 @@ admin_formpage:
 admin_articlepage:
     path:     /article/{id}
     defaults: { _controller: AdminBundle:Default:article }
+
+admin_editpage:
+    path:     /edit/{id}
+    defaults: { _controller: AdminBundle:Default:edit }
+
+admin_deletepage:
+    path:     /delete/{id}
+    defaults: { _controller: AdminBundle:Default:delete }
