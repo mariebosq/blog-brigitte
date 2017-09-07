@@ -108,17 +108,14 @@ class DefaultController extends Controller
     ));
   }
 
-  public function deleteAction(Article $article)
+  public function deleteAction($id)
   {
-      $em = $this
-      ->getDoctrine()
-      ->getManager()
-      ->getRepository('AdminBundle:Article')
-      ;
+      $em = $this->getDoctrine()->getEntityManager();
+      $article = $em->getRepository('AdminBundle:Article')->find($id);
 
       $em->remove($article);
       $em->flush();
 
-      return $this->render('AdminBundle:Default:delete.html.twig');
+      return $this->redirect($this->generateUrl('AdminBundle:Default:delete.html.twig'));
   }
 }
