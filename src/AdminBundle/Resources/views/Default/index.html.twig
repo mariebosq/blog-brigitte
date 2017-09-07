@@ -3,7 +3,7 @@
 {% block body %}
   <ul>
       {% for article in listArticles %}
-        <li>{{ article.getContent() }}</li>
+        <li>{{ article.getTitle() }} <button type="submit">Modifier</button><a href="{{ path('admin_deletepage', { 'id' : article.id }) }}">Supprimer</a>
       {% endfor %}
   </ul>
 {% endblock %}
