@@ -3,7 +3,13 @@
 {% block body %}
   <ul>
       {% for article in listArticles %}
-        <li>{{ article.getTitle() }} <button type="submit">Modifier</button><a href="{{ path('admin_deletepage', { 'id' : article.id }) }}">Supprimer</a>
+        <li>
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ article.getTitle() }}
+            <a href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
+            <a href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
+
+        </li>
       {% endfor %}
   </ul>
 {% endblock %}
