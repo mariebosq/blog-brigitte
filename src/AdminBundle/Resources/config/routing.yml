@@ -6,36 +6,31 @@ admin_homepage:
 admin_new_article:
     path:     /articles/new
     defaults: { _controller: AdminBundle:Default:new }
-    requirements:
-          _method: GET
+    methods: [GET]
 
 # Envoyer le formulaire de création
 admin_create_article:
     path:     /articles/
     defaults: { _controller: AdminBundle:Default:create }
-    requirements:
-          _method: POST
-
-# Afficher le formulaire d'édition
-admin_show_article:
-    path:     /articles/{id}/
-    defaults: { _controller: AdminBundle:Default:show }
-    requirements:
-          _method: GET
-
-# Afficher le formulaire d'édition
-admin_edit_article:
-    path:     /articles/{id}/edit
-    defaults: { _controller: AdminBundle:Default:edit }
-    requirements:
-          _method: GET
+    methods: [POST]
 
 # Envoyer le formulaire d'édition
 admin_update_article:
     path:     /articles/{id}
     defaults: { _controller: AdminBundle:Default:update }
-    requirements:
-          _method: PUT
+    methods: [PUT]
+
+# Afficher le formulaire d'édition
+admin_show_article:
+    path:     /articles/{id}/
+    defaults: { _controller: AdminBundle:Default:show }
+    methods: [GET]
+
+# Afficher le formulaire d'édition
+admin_edit_article:
+    path:     /articles/{id}/edit
+    defaults: { _controller: AdminBundle:Default:edit }
+    methods: [GET]
 
 # Supprimer l'article
 # Hack : GET method used for deletion
