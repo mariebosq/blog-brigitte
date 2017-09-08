@@ -9,7 +9,10 @@
 		<link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster+Two" />
 		<link rel="stylesheet" href="{{ asset('assets/admin/js/bootstrap.min.js') }}" />
-
+		<script
+		  src="https://code.jquery.com/jquery-3.2.1.min.js"
+		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		  crossorigin="anonymous"></script>
 		<title>Brigitte Joseph-Jeanneney</title>
 	</head>
 	<body>
@@ -18,7 +21,7 @@
         <div class="container-fluid">
           <ul class="nav navbar-nav">
             <li class="active"> <a href="{{ url('admin_homepage') }}">Mes articles</a> </li>
-            <li> <a href="{{ url('admin_formpage') }}">Création d'un nouvel article</a> </li>
+            <li> <a href="{{ url('admin_new_article') }}">Création d'un nouvel article</a> </li>
             <li> <a href="#">Autres choses?</a> </li>
             <li> <a href="#">Quid?</a> </li>
           </ul>
