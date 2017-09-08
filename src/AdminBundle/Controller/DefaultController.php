@@ -99,30 +99,23 @@ class DefaultController extends Controller
 
   public function editAction($id)
   {
-    $request = $this->get('request');
-
-    if (is_null($id)) {
-        $postData = $request->get('Article');
-        $id = $postData['id'];
-    }
-
     $em = $this->getDoctrine()->getEntityManager();
     $article= $em->getRepository('AdminBundle:Article')->find($id);
-    $form = $this->createForm(new ArticleType(), $article);
 
-    if ($request->getMethod() == 'POST') {
-        $form->bindRequest($request);
-
-        if ($form->isValid()) {
-            // perform some action, such as save the object to the database
-            $em->flush();
-
-            return $this->redirectToRoute('admin_articlepage');
-        }
-    }
+    // On crée le FormBuilder grâce au service form factory
+    $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
+      ->setAction($this->generateUrl('admin_update_article', ['id' => $article->getId()], true ))
+      ->setMethod('PUT')
+      ->add('createdAt',      DateType::class)
+      ->add('title',     TextType::class)
+      ->add('content',   TextareaType::class)
+      //->add('published', CheckboxType::class, array('required' => false))
+      ->add('save',      SubmitType::class)
+      ->getForm()
+    ;
 
     return $this->render('AdminBundle:Default:edit.html.twig', array(
-        'form' => $form->createView()
+      'form' => $form->createView(),
     ));
   }
 
@@ -131,7 +124,10 @@ class DefaultController extends Controller
     $em = $this->getDoctrine()->getEntityManager();
     $article= $em->getRepository('AdminBundle:Article')->find($id);
 
-    // Update here
+    $article->setTitle($request->request->get('form')['title']);
+    $article->setContent($request->request->get('form')['content']);
+
+    $em->flush();
 
     return $this->redirectToRoute('admin_homepage');
   }
