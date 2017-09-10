@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class ArticleController extends Controller
 {
@@ -132,17 +133,18 @@ class ArticleController extends Controller
     return $this->redirectToRoute('admin_homepage');
   }
 
-  //public function publishAction($id, Request $request)
-  //{
-    //$em = $this->getDoctrine()->getEntityManager();
-    //$article= $em->getRepository('AdminBundle:Article')->find($id);
+  public function publishAction($id, Request $request)
+  {
+    $em = $this->getDoctrine()->getEntityManager();
+    $article= $em->getRepository('AdminBundle:Article')->find($id);
 
-    //$article->setPublishedAt(....);
+    $now = new \DateTime();
+    $article->setPublishedAt($now);
 
-    //$em->flush();
+    $em->flush();
 
-    //return $this->redirectToRoute('admin_homepage');
-  //}
+    return $this->redirectToRoute('admin_homepage');
+  }
 
 
   public function deleteAction($id)
