@@ -8,6 +8,7 @@
             {{ article.getTitle() }}
             <a href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
             <a href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
+            <a href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a>
 
         </li>
       {% endfor %}
