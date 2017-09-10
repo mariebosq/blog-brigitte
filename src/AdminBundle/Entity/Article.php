@@ -42,6 +42,13 @@ class Article
      */
     private $createdAt;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime")
+     */
+    private $publishedAt;
+
 
     /**
      * Get id
@@ -123,5 +130,29 @@ class Article
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     *
+     * @return Articles
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
     }
 }
