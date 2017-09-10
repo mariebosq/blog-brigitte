@@ -20,6 +20,13 @@ admin_update_article:
     defaults: { _controller: AdminBundle:Article:update }
     methods: [PUT]
 
+# Envoyer le formulaire d'édition
+admin_publish_article:
+    path:     /articles/{id}/publish
+    defaults: { _controller: AdminBundle:Article:publish }
+    methods: [GET]
+
+
 # Afficher le formulaire d'édition
 admin_show_article:
     path:     /articles/{id}/
