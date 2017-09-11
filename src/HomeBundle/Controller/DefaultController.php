@@ -40,11 +40,31 @@ class DefaultController extends Controller
 
     public function eventAction()
     {
-      return $this->render('HomeBundle:Default:event.html.twig');
+      $repository = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('AdminBundle:Article')
+      ;
+
+      $listArticles = $repository->findBy(array('slug' => 'event'));
+
+      return $this->render('HomeBundle:Default:event.html.twig', array(
+        'listArticles' => $listArticles
+      ));
     }
 
     public function newsAction()
     {
-      return $this->render('HomeBundle:Default:news.html.twig');
+      $repository = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('AdminBundle:Article')
+      ;
+
+      $listArticles = $repository->findBy(array('slug' => 'actualites'));
+
+      return $this->render('HomeBundle:Default:news.html.twig', array(
+        'listArticles' => $listArticles
+      ));
     }
 }

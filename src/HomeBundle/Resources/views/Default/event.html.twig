@@ -1,0 +1,11 @@
+{% extends "HomeBundle:Default:layout.html.twig" %}
+
+{% block body %}
+
+  {% for article in listArticles %}
+    <h1>{{ article.getTitle() }}</h1>
+    <p>{{ article.getContent() }}<p>
+    <small>Créer le : {{ article.getCreatedAt()|date('Y-m-d') }}</small>
+  {% endfor %}
+
+{% endblock %}
