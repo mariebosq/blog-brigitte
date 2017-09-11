@@ -30,7 +30,9 @@ class DefaultController extends Controller
       ->getRepository('AdminBundle:Article')
       ;
 
-      $listArticles = $repository->findBy(array('slug' => 'enimages'));
+      $listArticles = $repository->findBy(
+        array('slug' => 'enimages'),
+        array('publishedAt' => 'desc'));
 
       return $this->render('HomeBundle:Default:images.html.twig', array(
         'listArticles' => $listArticles
@@ -46,7 +48,9 @@ class DefaultController extends Controller
       ->getRepository('AdminBundle:Article')
       ;
 
-      $listArticles = $repository->findBy(array('slug' => 'event'));
+      $listArticles = $repository->findBy(
+        array('slug' => 'event'),
+        array('publishedAt' => 'desc'));
 
       return $this->render('HomeBundle:Default:event.html.twig', array(
         'listArticles' => $listArticles
@@ -61,7 +65,9 @@ class DefaultController extends Controller
       ->getRepository('AdminBundle:Article')
       ;
 
-      $listArticles = $repository->findBy(array('slug' => 'actualites'));
+      $listArticles = $repository->findBy(
+        array('slug' => 'actualites'),
+        array('publishedAt' => 'desc'));
 
       return $this->render('HomeBundle:Default:news.html.twig', array(
         'listArticles' => $listArticles
