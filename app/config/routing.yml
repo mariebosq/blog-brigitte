@@ -5,7 +5,3 @@ admin:
 home:
     resource: "@HomeBundle/Resources/config/routing.yml"
     prefix:   /home
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
