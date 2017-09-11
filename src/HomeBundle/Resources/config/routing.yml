@@ -9,3 +9,15 @@ home_lifepage:
 home_writingpage:
     path:     /writing
     defaults: { _controller: HomeBundle:Default:writing }
+
+home_imagespage:
+    path:     /images
+    defaults: { _controller: HomeBundle:Default:images }
+
+home_eventpage:
+    path:     /event
+    defaults: { _controller: HomeBundle:Default:event }
+
+home_newspage:
+    path:     /news
+    defaults: { _controller: HomeBundle:Default:news }

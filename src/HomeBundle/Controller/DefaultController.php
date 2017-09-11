@@ -19,4 +19,16 @@ class DefaultController extends Controller
     {
       return $this->render('HomeBundle:Default:writing.html.twig');
     }
+    public function imagesAction()
+    {
+      return $this->render('HomeBundle:Default:images.html.twig');
+    }
+    public function eventAction()
+    {
+      return $this->render('HomeBundle:Default:event.html.twig');
+    }
+    public function newsAction()
+    {
+      return $this->render('HomeBundle:Default:news.html.twig');
+    }
 }

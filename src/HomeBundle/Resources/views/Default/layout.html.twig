@@ -28,15 +28,15 @@
 					<i class="fa fa-book" aria-hidden="true"></i>
 					Mes écrits
 				</a>
-				<a href="#" class="col-xs-12 col-lg-2">
+				<a href="{{ url('home_imagespage') }}" class="col-xs-12 col-lg-2">
 					<i class="fa fa-picture-o" aria-hidden="true"></i>
 					En images
 				</a>
-				<a href="#" class="col-xs-12 col-lg-2">
+				<a href="{{ url('home_newspage') }}" class="col-xs-12 col-lg-2">
 					<i class="fa fa-newspaper-o" aria-hidden="true"></i>
 					On en a parlé...
 				</a>
-				<a href="#" class="col-xs-12 col-lg-2">
+				<a href="{{ url('home_eventpage') }}" class="col-xs-12 col-lg-2">
 					<i class="fa fa-calendar" aria-hidden="true"></i>
 					Actualités
 				</a>
@@ -63,14 +63,14 @@
 				<h2>Brigitte Joseph-Jeanneney</h2>
 				<a href="{{ url('home_homepage') }}">Accueil</a>
 				<a href="{{ url('home_writingpage') }}">Mes écrits</a>
-				<a href="#">En images</a>
+				<a href="{{ url('home_imagespage') }}">En images</a>
 			</section>
 
 			<section id="follow">
 				<h2>Suivez-moi</h2>
 				<a href="{{ url('home_lifepage') }}">Ma vie</a>
-				<a href="#">On en a parlé...</a>
-				<a href="#">Actualités</a>
+				<a href="{{ url('home_newspage') }}">On en a parlé...</a>
+				<a href="{{ url('home_eventpage') }}">Actualités</a>
 				<a href="mailto:brigitte.joseph.jeanneney@gmail.com">Contact</a>
 			</section>
 
