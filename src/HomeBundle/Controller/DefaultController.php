@@ -3,6 +3,7 @@
 namespace HomeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AdminBundle\Entity\Article;
 
 class DefaultController extends Controller
 {
@@ -15,18 +16,33 @@ class DefaultController extends Controller
     {
       return $this->render('HomeBundle:Default:life.html.twig');
     }
+
     public function writingAction()
     {
       return $this->render('HomeBundle:Default:writing.html.twig');
     }
+
     public function imagesAction()
     {
-      return $this->render('HomeBundle:Default:images.html.twig');
+      $repository = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('AdminBundle:Article')
+      ;
+
+      $listArticles = $repository->findBy(array('slug' => 'enimages'));
+
+      return $this->render('HomeBundle:Default:images.html.twig', array(
+        'listArticles' => $listArticles
+      ));
+
     }
+
     public function eventAction()
     {
       return $this->render('HomeBundle:Default:event.html.twig');
     }
+
     public function newsAction()
     {
       return $this->render('HomeBundle:Default:news.html.twig');
