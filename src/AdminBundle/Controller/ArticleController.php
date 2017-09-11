@@ -46,9 +46,9 @@ class ArticleController extends Controller
     // On crée le FormBuilder grâce au service form factory
     $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
       ->add('createdAt',      DateType::class)
+      ->add('slug',     TextType::class)
       ->add('title',     TextType::class)
       ->add('content',   TextareaType::class)
-      //->add('published', CheckboxType::class, array('required' => false))
       ->add('save',      SubmitType::class)
       ->getForm()
     ;
@@ -83,6 +83,7 @@ class ArticleController extends Controller
       $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
         ->setAction($this->generateUrl('admin_create_article'))
         ->add('createdAt',      DateType::class)
+        ->add('slug',     TextType::class)
         ->add('title',     TextType::class)
         ->add('content',   TextareaType::class)
         //->add('published', CheckboxType::class, array('required' => false))
@@ -108,6 +109,7 @@ class ArticleController extends Controller
       ->setAction($this->generateUrl('admin_update_article', ['id' => $article->getId()], true ))
       ->setMethod('PUT')
       ->add('createdAt',      DateType::class)
+      ->add('slug',     TextType::class)
       ->add('title',     TextType::class)
       ->add('content',   TextareaType::class)
       //->add('published', CheckboxType::class, array('required' => false))
