@@ -49,6 +49,12 @@ class Article
      */
     private $publishedAt;
 
+    /**
+    * @var string
+    *
+    * @ORM\Column(name="slug", type="string", length=50)
+    */
+   private $slug;
 
     /**
      * Get id
@@ -154,5 +160,29 @@ class Article
     public function getPublishedAt()
     {
         return $this->publishedAt;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Articles
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
