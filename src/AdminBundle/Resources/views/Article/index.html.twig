@@ -10,7 +10,7 @@
             <a class="confirmModal" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
 
             {% if article.getPublishedAt() %}
-                <a href="#">Dépublier</a>
+                <a href="{{ path('admin_depublish_article', { 'id' : article.id }) }}">Dépublier</a>
             {% else %}
                 <a class="confirmModalp" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a>
             {% endif %}
