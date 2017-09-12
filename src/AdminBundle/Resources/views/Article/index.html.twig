@@ -7,10 +7,17 @@
             <input type="hidden" name="_method" value="DELETE" />
             {{ article.getTitle() }}
             <a href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
-            <a href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
+            <a class="confirmModal" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
             <a href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a>
 
         </li>
       {% endfor %}
   </ul>
+
+  <div id="dialog-confirm" title="Confirmation de la suppression" style="display:none;">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+      Etes-vous sûr de vouloir supprimer cet élément ?
+      </p>
+  </div>
 {% endblock %}
