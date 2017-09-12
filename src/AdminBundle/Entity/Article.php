@@ -56,6 +56,13 @@ class Article
     */
    private $slug;
 
+   /**
+   * @var string
+   *
+   * @ORM\Column(name="category", type="string", length=50)
+   */
+  private $category;
+
     /**
      * Get id
      *
@@ -184,5 +191,29 @@ class Article
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Articles
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
