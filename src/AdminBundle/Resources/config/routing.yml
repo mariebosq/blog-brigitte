@@ -26,6 +26,12 @@ admin_publish_article:
     defaults: { _controller: AdminBundle:Article:publish }
     methods: [GET]
 
+# Envoyer le formulaire d'édition
+admin_depublish_article:
+    path:     /articles/{id}/depublish
+    defaults: { _controller: AdminBundle:Article:depublish }
+    methods: [GET]
+
 
 # Afficher le formulaire d'édition
 admin_show_article:
