@@ -8,7 +8,12 @@
             {{ article.getTitle() }}
             <a href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
             <a class="confirmModal" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
-            <a href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a>
+
+            {% if article.getPublishedAt() %}
+                <a href="#">Dépublier</a>
+            {% else %}
+                <a class="confirmModalp" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a>
+            {% endif %}
 
         </li>
       {% endfor %}
@@ -17,7 +22,14 @@
   <div id="dialog-confirm" title="Confirmation de la suppression" style="display:none;">
     <p>
       <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
-      Etes-vous sûr de vouloir supprimer cet élément ?
+      Etes-vous sûr de vouloir supprimer cet article ?
+      </p>
+  </div>
+
+  <div id="dialog-confirm-modif" title="Confirmation de la publication" style="display:none;">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+      Etes-vous sûr de vouloir publier cet article ?
       </p>
   </div>
 {% endblock %}
