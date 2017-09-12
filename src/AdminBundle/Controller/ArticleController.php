@@ -162,4 +162,16 @@ class ArticleController extends Controller
 
       return $this->redirectToRoute('admin_homepage');
   }
+
+  public function depublishAction($id, Request $request)
+  {
+    $em = $this->getDoctrine()->getEntityManager();
+    $article= $em->getRepository('AdminBundle:Article')->find($id);
+
+    $article->setPublishedAt(NULL);
+
+    $em->flush();
+
+    return $this->redirectToRoute('admin_homepage');
+  }
 }
