@@ -31,9 +31,9 @@ class DefaultController extends Controller
 
         $listArticles = $repository
         ->createQueryBuilder('u')
-        ->where('u.category', 'en-images')
-        //->andWhere('u.publishedAt IS NOT NULL')
-        //->orderBy('u.publishedAt', 'desc')
+        ->where('u.category = "en-images"')
+        ->andWhere('u.publishedAt IS NOT NULL')
+        ->orderBy('u.publishedAt', 'desc')
         ->getQuery();
 
         return $this->render('HomeBundle:Default:images.html.twig', array(
