@@ -25,52 +25,57 @@ class DefaultController extends Controller
     public function imagesAction()
     {
       $repository = $this
-      ->getDoctrine()
-      ->getManager()
-      ->getRepository('AdminBundle:Article')
-      ;
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('AdminBundle:Article');
 
-      $listArticles = $repository->findBy(
-        array('slug' => 'enimages'),
-        array('publishedAt' => 'desc'));
+        $listArticles = $repository
+        ->createQueryBuilder('u')
+        ->where('u.category', 'en-images')
+        //->andWhere('u.publishedAt IS NOT NULL')
+        //->orderBy('u.publishedAt', 'desc')
+        ->getQuery();
 
-      return $this->render('HomeBundle:Default:images.html.twig', array(
-        'listArticles' => $listArticles
-      ));
-
+        return $this->render('HomeBundle:Default:images.html.twig', array(
+          'listArticles' => $listArticles
+        ));
     }
 
     public function eventAction()
     {
       $repository = $this
-      ->getDoctrine()
-      ->getManager()
-      ->getRepository('AdminBundle:Article')
-      ;
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('AdminBundle:Article');
 
-      $listArticles = $repository->findBy(
-        array('slug' => 'event'),
-        array('publishedAt' => 'desc'));
+        $listArticles = $repository
+        ->createQueryBuilder('u')
+        ->where('u.publishedAt IS NOT NULL')
+        ->andwhere('category', 'actualites')
+        ->orderby('publishedAt', 'desc')
+        ->getQuery();
 
-      return $this->render('HomeBundle:Default:event.html.twig', array(
-        'listArticles' => $listArticles
-      ));
+        return $this->render('HomeBundle:Default:event.html.twig', array(
+          'listArticles' => $listArticles
+        ));
     }
 
     public function newsAction()
     {
       $repository = $this
-      ->getDoctrine()
-      ->getManager()
-      ->getRepository('AdminBundle:Article')
-      ;
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('AdminBundle:Article');
 
-      $listArticles = $repository->findBy(
-        array('slug' => 'actualites'),
-        array('publishedAt' => 'desc'));
+        $listArticles = $repository
+        ->createQueryBuilder('u')
+        ->where('u.publishedAt IS NOT NULL')
+        ->andwhere('category', 'on-en-a-parle')
+        ->orderby('publishedAt', 'desc')
+        ->getQuery();
 
-      return $this->render('HomeBundle:Default:news.html.twig', array(
-        'listArticles' => $listArticles
-      ));
+        return $this->render('HomeBundle:Default:news.html.twig', array(
+          'listArticles' => $listArticles
+        ));
     }
 }
