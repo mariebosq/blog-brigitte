@@ -3,6 +3,7 @@
   list-style-type: none;
 }
 
-.title-article h1 {
+.title-article h1>a {
   color: grey;
+  text-decoration: none;
 }
