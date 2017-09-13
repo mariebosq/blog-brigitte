@@ -45,7 +45,6 @@ class ArticleController extends Controller
 
     // On crée le FormBuilder grâce au service form factory
     $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
-      ->add('createdAt',      DateType::class)
       ->add('slug',     TextType::class)
       ->add('category',     TextType::class)
       ->add('title',     TextType::class)
@@ -53,9 +52,6 @@ class ArticleController extends Controller
       ->add('save',      SubmitType::class)
       ->getForm()
     ;
-
-    // // Si la requête est en POST
-    // if ($request->isMethod('POST')) {
 
     // On fait le lien Requête <-> Formulaire
     // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
@@ -83,15 +79,14 @@ class ArticleController extends Controller
       // On crée le FormBuilder grâce au service form factory
       $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
         ->setAction($this->generateUrl('admin_create_article'))
-        ->add('createdAt',      DateType::class)
         ->add('slug',     TextType::class)
         ->add('category',     TextType::class)
         ->add('title',     TextType::class)
         ->add('content',   TextareaType::class)
-        //->add('published', CheckboxType::class, array('required' => false))
         ->add('save',      SubmitType::class)
         ->getForm()
       ;
+
 
       // À ce stade, le formulaire n'est pas valide car :
       // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
@@ -110,7 +105,6 @@ class ArticleController extends Controller
     $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
       ->setAction($this->generateUrl('admin_update_article', ['id' => $article->getId()], true ))
       ->setMethod('PUT')
-      ->add('createdAt',      DateType::class)
       ->add('slug',     TextType::class)
       ->add('category',     TextType::class)
       ->add('title',     TextType::class)
