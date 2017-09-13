@@ -1,13 +1,14 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace AdminBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use AdminBundle\Entity\Article;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use InvalidArgumentException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ArticleRepository extends EntityRepository
+class ArticlesRepository extends EntityRepository
 {
     /**
      * Récupère une liste d'articles triés et paginés.
