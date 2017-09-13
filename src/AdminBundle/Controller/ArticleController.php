@@ -168,4 +168,26 @@ class ArticleController extends Controller
 
     return $this->redirectToRoute('admin_homepage');
   }
+
+  public function listAction($page)
+    {
+        $nbArticlesParPage = $this->container->getParameter('front_nb_articles_par_page');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em->getRepository('AdminBundle:Article')
+            ->findAllPagineEtTrie($page, $nbArticlesParPage);
+
+        $pagination = array(
+            'page' => $page,
+            'nbPages' => ceil(count($articles) / $nbArticlesParPage),
+            'nomRoute' => 'admin_list_article',
+            'paramsRoute' => array()
+        );
+
+        return $this->render('AdminBundle:Article:index.html.twig', array(
+            'articles' => $articles,
+            'pagination' => $pagination
+        ));
+    }
 }
