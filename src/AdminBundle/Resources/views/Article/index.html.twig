@@ -5,12 +5,12 @@
       {% for article in listArticles %}
         <li>
             <input type="hidden" name="_method" value="DELETE" />
-            <h1>{{ article.getTitle() }}</h1>
+            <h1><a href="{{ url('admin_show_article', { 'id' : article.id }) }}">{{ article.getTitle() }}</a></h1>
             <p><a class="btn btn-primary btn-md" href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
             <a class="confirmModal btn btn-primary btn-md" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
 
             {% if article.getPublishedAt() %}
-                <a class="btn btn-primary btn-md" href="{{ path('admin_depublish_article', { 'id' : article.id }) }}">Dépublier</a>
+                <a class="btn btn-primary btn-md depublish" href="{{ path('admin_depublish_article', { 'id' : article.id }) }}">Dépublier</a>
             {% else %}
                 <a class="confirmModalp btn btn-primary btn-md" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a></p>
             {% endif %}
