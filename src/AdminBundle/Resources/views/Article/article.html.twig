@@ -4,6 +4,8 @@
 
   <h1>{{ article.getTitle() }}</h1>
   <p>{{ article.getContent() }}<p>
+  <p>Catégorie : {{ article.getCategory() }}<p>
   <small>Créer le : {{ article.getCreatedAt()|date('Y-m-d') }}</small>
+  <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
 
 {% endblock %}
