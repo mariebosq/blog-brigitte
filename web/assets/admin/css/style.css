@@ -1,1 +1,8 @@
+/*Titre d'article du index*/
+.title-article {
+  list-style-type: none;
+}
 
+.title-article h1 {
+  color: grey;
+}
