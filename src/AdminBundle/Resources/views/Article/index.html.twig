@@ -1,18 +1,18 @@
 {% extends "AdminBundle:Article:layout.html.twig" %}
 
 {% block body %}
-  <ul>
+  <ul class="title-article">
       {% for article in listArticles %}
         <li>
             <input type="hidden" name="_method" value="DELETE" />
-            {{ article.getTitle() }}
-            <a href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
-            <a class="confirmModal" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
+            <h1>{{ article.getTitle() }}</h1>
+            <p><a class="btn btn-primary btn-md" href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
+            <a class="confirmModal btn btn-primary btn-md" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
 
             {% if article.getPublishedAt() %}
-                <a href="{{ path('admin_depublish_article', { 'id' : article.id }) }}">Dépublier</a>
+                <a class="btn btn-primary btn-md" href="{{ path('admin_depublish_article', { 'id' : article.id }) }}">Dépublier</a>
             {% else %}
-                <a class="confirmModalp" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a>
+                <a class="confirmModalp btn btn-primary btn-md" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a></p>
             {% endif %}
 
         </li>
