@@ -2,25 +2,53 @@
 
 {% block body %}
   {% if listArticles is not empty %}
-    <ul class="title-article">
-        {% for article in listArticles %}
-          <li>
-              <input type="hidden" name="_method" value="DELETE" />
-              <h1><a href="{{ url('admin_show_article', { 'id' : article.id }) }}">{{ article.getTitle() }}</a></h1>
-              <p><a class="btn btn-primary btn-md" href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
-              <a class="confirmModal btn btn-primary btn-md" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
 
-              {% if article.getPublishedAt() %}
-                  <a class="btn btn-primary btn-md depublish" href="{{ path('admin_depublish_article', { 'id' : article.id }) }}">Dépublier</a>
-              {% else %}
-                  <a class="confirmModalp btn btn-primary btn-md" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a></p>
-              {% endif %}
+  <section class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Catégorie</th>
+          <th>Date de Publication</th>
+          <th>Date de Création</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for article in listArticles %}
+        <tr>
+          <td><a href="{{ url('admin_show_article', { 'id' : article.id }) }}">{{ article.getTitle() }}</a></td>
+          <td>{{ article.getCategory() }}</td>
+          <td>{{ article.getPublishedAt()|date('Y-m-d') }}</td>
+          <td>{{ article.getCreatedAt()|date('Y-m-d') }}</td>
+          <td><a class="btn btn-success btn-md" href="{{ path('admin_edit_article', { 'id' : article.id }) }}">Modifier</a>
+          <a class="confirmModal btn btn-warning btn-md" href="{{ path('admin_delete_article', { 'id' : article.id }) }}">Supprimer</a>
 
-          </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-      <p>Il n'y a aucun article pour l'instant.</p>
+          {% if article.getPublishedAt() %}
+              <a class="btn btn-primary btn-md depublish" href="{{ path('admin_depublish_article', { 'id' : article.id }) }}">Dépublier</a>
+          {% else %}
+              <a class="confirmModalp btn btn-primary btn-md" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a></p>
+          {% endif %}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </section>
+  {% else %}
+      <a class="confirmModalp btn btn-primary btn-md" href="{{ path('admin_publish_article', { 'id' : article.id }) }}">Publier</a></p>
   {% endif %}
 
+  <div id="dialog-confirm" title="Confirmation de la suppression" style="display:none;">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+      Etes-vous sûr de vouloir supprimer cet élément ?
+      </p>
+  </div>
+
+  <div id="dialog-confirm-modif" title="Confirmation de la modification" style="display:none;">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+      Etes-vous sûr de vouloir modifier cet article ?
+      </p>
+  </div>
 {% endblock %}
