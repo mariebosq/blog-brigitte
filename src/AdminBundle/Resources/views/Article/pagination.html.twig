@@ -1,15 +1,13 @@
-{% extends "AdminBundle:Article:index.html.twig" %}
-
   {% if pagination.nbPages > 0 %}
       <ul class="pagination">
           {% if pagination.page > 1 %}
               <li>
-                  <a href="{{ path(admin_list_article, pagination.paramsRoute|merge({'page': 1})) }}">
+                  <a href="{{ path(pagination.nomRoute, pagination.paramsRoute|merge({'page': 1})) }}">
                       <<
                   </a>
               </li>
               <li>
-                  <a href="{{ path(admin_list_article,
+                  <a href="{{ path(pagination.nomRoute,
                   pagination.paramsRoute|merge({'page': pagination.page-1})) }}">
                       <
                   </a>
@@ -27,13 +25,13 @@
 
           {% if pagination.page < pagination.nbPages %}
               <li>
-                  <a href="{{ path(admin_list_article,
+                  <a href="{{ path(pagination.nomRoute,
                   pagination.paramsRoute|merge({'page': pagination.page+1})) }}">
                       >
                   </a>
               </li>
               <li>
-                  <a href="{{ path(admin_list_article,
+                  <a href="{{ path(pagination.nomRoute,
                   pagination.paramsRoute|merge({'page': pagination.nbPages})) }}">
                       >>
                   </a>

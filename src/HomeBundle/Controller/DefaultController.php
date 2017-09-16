@@ -29,12 +29,13 @@ class DefaultController extends Controller
         ->getManager()
         ->getRepository('AdminBundle:Article');
 
-        $listArticles = $repository
-        ->createQueryBuilder('u')
-        ->where('u.category = "en-images"')
-        ->andWhere('u.publishedAt IS NOT NULL')
-        ->orderBy('u.publishedAt', 'desc')
-        ->getQuery();
+        $query = $repository->createQueryBuilder('a')
+          ->where("a.category = 'en-images'")
+          ->andWhere('a.publishedAt IS NOT NULL')
+          ->getQuery()
+        ;
+
+        $listArticles = $query->execute();
 
         return $this->render('HomeBundle:Default:images.html.twig', array(
           'listArticles' => $listArticles
@@ -48,12 +49,13 @@ class DefaultController extends Controller
         ->getManager()
         ->getRepository('AdminBundle:Article');
 
-        $listArticles = $repository
-        ->createQueryBuilder('u')
-        ->where('u.publishedAt IS NOT NULL')
-        ->andwhere('category', 'actualites')
-        ->orderby('publishedAt', 'desc')
-        ->getQuery();
+      $query = $repository->createQueryBuilder('a')
+        ->where("a.category = 'actualites'")
+        ->andWhere('a.publishedAt IS NOT NULL')
+        ->getQuery()
+      ;
+
+        $listArticles = $query->execute();
 
         return $this->render('HomeBundle:Default:event.html.twig', array(
           'listArticles' => $listArticles
@@ -67,12 +69,13 @@ class DefaultController extends Controller
         ->getManager()
         ->getRepository('AdminBundle:Article');
 
-        $listArticles = $repository
-        ->createQueryBuilder('u')
-        ->where('u.publishedAt IS NOT NULL')
-        ->andwhere('category', 'on-en-a-parle')
-        ->orderby('publishedAt', 'desc')
-        ->getQuery();
+        $query = $repository->createQueryBuilder('a')
+          ->where("a.category = 'on-en-a-parle'")
+          ->andWhere('a.publishedAt IS NOT NULL')
+          ->getQuery()
+        ;
+
+        $listArticles = $query->execute();
 
         return $this->render('HomeBundle:Default:news.html.twig', array(
           'listArticles' => $listArticles

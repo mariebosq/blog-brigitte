@@ -4,7 +4,9 @@ namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Entity\Article;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\HttpFoundation\Request;
+use AdminBundle\Repository\ArticlesRepository;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -48,7 +50,7 @@ class ArticleController extends Controller
       ->add('slug',     TextType::class)
       ->add('category',     TextType::class)
       ->add('title',     TextType::class)
-      ->add('content',   TextareaType::class)
+      ->add('content', CKEditorType::class, array('config_name' => 'basic_config'))
       ->add('save',      SubmitType::class)
       ->getForm()
     ;
@@ -82,7 +84,7 @@ class ArticleController extends Controller
         ->add('slug',     TextType::class)
         ->add('category',     TextType::class)
         ->add('title',     TextType::class)
-        ->add('content',   TextareaType::class)
+        ->add('content', CKEditorType::class, array('config_name' => 'basic_config'))
         ->add('save',      SubmitType::class)
         ->getForm()
       ;
@@ -108,7 +110,7 @@ class ArticleController extends Controller
       ->add('slug',     TextType::class)
       ->add('category',     TextType::class)
       ->add('title',     TextType::class)
-      ->add('content',   TextareaType::class)
+      ->add('content', CKEditorType::class, array('config_name' => 'basic_config'))
       //->add('published', CheckboxType::class, array('required' => false))
       ->add('save',      SubmitType::class)
       ->getForm()

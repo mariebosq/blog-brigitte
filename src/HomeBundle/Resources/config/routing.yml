@@ -7,17 +7,17 @@ home_lifepage:
     defaults: { _controller: HomeBundle:Default:life }
 
 home_writingpage:
-    path:     /writing
+    path:     /mes-ecrits
     defaults: { _controller: HomeBundle:Default:writing }
 
 home_imagespage:
-    path:     /images
+    path:     /en-images
     defaults: { _controller: HomeBundle:Default:images }
 
 home_eventpage:
-    path:     /event
+    path:     /evenements
     defaults: { _controller: HomeBundle:Default:event }
 
 home_newspage:
-    path:     /news
+    path:     /actualites
     defaults: { _controller: HomeBundle:Default:news }

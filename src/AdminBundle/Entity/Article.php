@@ -216,4 +216,4 @@ class Article
     {
         return $this->category;
     }
-}
+  }
