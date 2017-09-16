@@ -40,8 +40,7 @@ class ArticlesRepository extends EntityRepository
         }
 
         $qb = $this->createQueryBuilder('a')
-            ->where('CURRENT_DATE() >= a.publishedAt')
-            ->orderBy('a.publishedAt', 'DESC');
+            ->orderBy('a.createdAt', 'DESC');
 
         $query = $qb->getQuery();
 

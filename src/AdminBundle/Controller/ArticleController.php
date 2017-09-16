@@ -16,19 +16,32 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class ArticleController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $repository = $this
-        ->getDoctrine()
-        ->getManager()
-        ->getRepository('AdminBundle:Article')
-        ;
+      // On recupere la page courante
+      $page = $request->query->get('page');
 
-        $listArticles = $repository->findAll();
+      // Si celle-ci n'est pas precisée (par defaut), on la met a 1
+      if ($page == NULL) {
+        $page = 1;
+      }
 
-        return $this->render('AdminBundle:Article:index.html.twig', array(
-          'listArticles' => $listArticles
-        ));
+      $em = $this->getDoctrine()->getManager();
+
+      $articles = $em->getRepository('AdminBundle:Article')
+          ->findAllPagineEtTrie($page, 10);
+
+      $pagination = array(
+          'page' => $page,
+          'nbPages' => ceil(count($articles) / 10),
+          'nomRoute' => 'admin_homepage',
+          'paramsRoute' => array()
+      );
+
+      return $this->render('AdminBundle:Article:index.html.twig', array(
+          'listArticles' => $articles,
+          'pagination' => $pagination
+      ));
     }
 
     public function showAction($id)
@@ -186,6 +199,8 @@ class ArticleController extends Controller
             'nomRoute' => 'admin_list_article',
             'paramsRoute' => array()
         );
+
+        var_dump($pagination);
 
         return $this->render('AdminBundle:Article:index.html.twig', array(
             'articles' => $articles,

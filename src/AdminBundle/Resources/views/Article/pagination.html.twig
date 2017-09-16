@@ -26,13 +26,13 @@
           {% if pagination.page < pagination.nbPages %}
               <li>
                   <a href="{{ path(pagination.nomRoute,
-                  pagination.paramsRoute|merge({'page': pagination.page+1})) }}">
+                  pagination.paramsRoute|merge({'page': pagination.page+1 })) }}">
                       >
                   </a>
               </li>
               <li>
                   <a href="{{ path(pagination.nomRoute,
-                  pagination.paramsRoute|merge({'page': pagination.nbPages})) }}">
+                  pagination.paramsRoute|merge({'page': pagination.nbPages })) }}">
                       >>
                   </a>
               </li>

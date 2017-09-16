@@ -51,4 +51,6 @@
       Etes-vous sûr de vouloir modifier cet article ?
       </p>
   </div>
+
+  {% include "AdminBundle:Article:pagination.html.twig" with { 'pagination': pagination } %}
 {% endblock %}

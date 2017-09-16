@@ -1,6 +1,9 @@
 admin_homepage:
     path:     /
     defaults: { _controller: AdminBundle:Article:index }
+    requirements:
+        page:  \d+
+    methods: [GET]
 
 # Afficher le formulaire de création
 admin_new_article:
@@ -50,10 +53,3 @@ admin_edit_article:
 admin_delete_article:
     path:     /articles/{id}/delete
     defaults: { _controller: AdminBundle:Article:delete }
-
-admin_list_article:
-    path:  /articles/list/{page}
-    defaults: { _controller: AdminBundle:Article:list }
-    requirements:
-        page:  \d+
-    methods: [GET]
