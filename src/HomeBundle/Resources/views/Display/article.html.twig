@@ -1,0 +1,9 @@
+{% extends "HomeBundle:Display:layout.html.twig" %}
+
+{% block body %}
+
+  <h1>{{ article.getTitle() }}</h1>
+  <p>{{ article.getContent() }}<p>
+  <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
+
+{% endblock %}

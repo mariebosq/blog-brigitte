@@ -81,4 +81,13 @@ class DisplayController extends Controller
           'listArticles' => $listArticles
         ));
     }
+
+    public function showAction($id)
+    {
+        $repository = $this->getDoctrine()->getRepository('AdminBundle:Article');
+
+        $article = $repository->find($id);
+
+        return $this->render('HomeBundle:Display:article.html.twig', array('article' => $article));
+    }
 }

@@ -3,9 +3,12 @@
 {% block body %}
 
   {% for article in listArticles %}
-    <h1>{{ article.getTitle() }}</h1>
-    <p>{{ article.getContent() }}<p>
-    <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
+    <section>
+      <h1>{{ article.getTitle() }}</h1>
+      <p>{{ article.getContent() }}<p>
+      <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
+    </section>
+  {% include "HomeBundle:Display:button.html.twig" %}
   {% endfor %}
 
 {% endblock %}

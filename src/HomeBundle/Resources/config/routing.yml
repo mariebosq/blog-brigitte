@@ -21,3 +21,8 @@ home_eventpage:
 home_newspage:
     path:     /actualites
     defaults: { _controller: HomeBundle:Display:news }
+
+home_showarticle:
+    path:     /articles/{id}/
+    defaults: { _controller: HomeBundle:Display:show }
+    methods: [GET]
