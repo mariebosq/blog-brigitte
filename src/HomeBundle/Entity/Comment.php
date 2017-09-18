@@ -5,9 +5,9 @@ namespace HomeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comment
+ * Comments
  *
- * @ORM\Table(name="comment")
+ * @ORM\Table(name="comments")
  * @ORM\Entity(repositoryClass="HomeBundle\Repository\CommentRepository")
  */
 class Comment
