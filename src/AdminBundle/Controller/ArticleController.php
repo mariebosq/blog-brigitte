@@ -67,6 +67,8 @@ class ArticleController extends Controller
       ->add('save',      SubmitType::class)
       ->getForm()
     ;
+    $now = new \DateTime();
+    $article->setCreatedAt($now);
 
     // On fait le lien Requête <-> Formulaire
     // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
