@@ -1,23 +1,23 @@
 home_homepage:
     path:     /
-    defaults: { _controller: HomeBundle:Default:index }
+    defaults: { _controller: HomeBundle:Display:index }
 
 home_lifepage:
     path:     /life
-    defaults: { _controller: HomeBundle:Default:life }
+    defaults: { _controller: HomeBundle:Display:life }
 
 home_writingpage:
     path:     /mes-ecrits
-    defaults: { _controller: HomeBundle:Default:writing }
+    defaults: { _controller: HomeBundle:Display:writing }
 
 home_imagespage:
     path:     /en-images
-    defaults: { _controller: HomeBundle:Default:images }
+    defaults: { _controller: HomeBundle:Display:images }
 
 home_eventpage:
     path:     /evenements
-    defaults: { _controller: HomeBundle:Default:event }
+    defaults: { _controller: HomeBundle:Display:event }
 
 home_newspage:
     path:     /actualites
-    defaults: { _controller: HomeBundle:Default:news }
+    defaults: { _controller: HomeBundle:Display:news }

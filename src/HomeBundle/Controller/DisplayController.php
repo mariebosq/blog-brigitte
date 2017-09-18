@@ -5,21 +5,21 @@ namespace HomeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Entity\Article;
 
-class DefaultController extends Controller
+class DisplayController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('HomeBundle:Default:index.html.twig');
+        return $this->render('HomeBundle:Display:index.html.twig');
     }
 
     public function lifeAction()
     {
-      return $this->render('HomeBundle:Default:life.html.twig');
+      return $this->render('HomeBundle:Display:life.html.twig');
     }
 
     public function writingAction()
     {
-      return $this->render('HomeBundle:Default:writing.html.twig');
+      return $this->render('HomeBundle:Display:writing.html.twig');
     }
 
     public function imagesAction()
@@ -37,7 +37,7 @@ class DefaultController extends Controller
 
         $listArticles = $query->execute();
 
-        return $this->render('HomeBundle:Default:images.html.twig', array(
+        return $this->render('HomeBundle:Display:images.html.twig', array(
           'listArticles' => $listArticles
         ));
     }
@@ -57,7 +57,7 @@ class DefaultController extends Controller
 
         $listArticles = $query->execute();
 
-        return $this->render('HomeBundle:Default:event.html.twig', array(
+        return $this->render('HomeBundle:Display:event.html.twig', array(
           'listArticles' => $listArticles
         ));
     }
@@ -77,7 +77,7 @@ class DefaultController extends Controller
 
         $listArticles = $query->execute();
 
-        return $this->render('HomeBundle:Default:news.html.twig', array(
+        return $this->render('HomeBundle:Display:news.html.twig', array(
           'listArticles' => $listArticles
         ));
     }
