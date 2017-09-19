@@ -4,6 +4,13 @@ namespace HomeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Entity\Article;
+use HomeBundle\Entity\Comment;
+
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class DisplayController extends Controller
 {
@@ -88,6 +95,19 @@ class DisplayController extends Controller
 
         $article = $repository->find($id);
 
-        return $this->render('HomeBundle:Display:article.html.twig', array('article' => $article));
+        $comment = new Comment();
+
+        // On crée le FormBuilder grâce au service form factory
+        $form = $this->get('form.factory')->createBuilder(FormType::class, $comment)
+          ->setAction($this->generateUrl('home_showarticle', ['id' => $article->getId()], true ))
+          ->add('name',     TextType::class)
+          ->add('content', TextareaType::class)
+          ->add('save',      SubmitType::class)
+          ->getForm()
+        ;
+
+        return $this->render('HomeBundle:Display:article.html.twig',
+          array('article' => $article, 'form' => $form->createView()));
     }
+
 }

@@ -6,4 +6,6 @@
   <p>{{ article.getContent() }}<p>
   <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
 
+  {% include "HomeBundle:Display:form.html.twig" %}
+
 {% endblock %}

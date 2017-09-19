@@ -58,9 +58,9 @@ class Comment
      *
      * @param string $name
      *
-     * @return Articles
+     * @return Comments
      */
-    public function setTitle($name)
+    public function setName($name)
     {
         $this->name = $name;
 
@@ -82,7 +82,7 @@ class Comment
      *
      * @param string $content
      *
-     * @return Articles
+     * @return Comments
      */
     public function setContent($content)
     {
@@ -106,7 +106,7 @@ class Comment
      *
      * @param \DateTime $publishedAt
      *
-     * @return Articles
+     * @return Comments
      */
     public function setPublishedAt($publishedAt)
     {
