@@ -6,6 +6,13 @@
   <p>{{ article.getContent() }}<p>
   <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
 
+
+  {% for comment in comments %}
+    <h1>{{ comment.getName() }}</h1>
+    <p>{{ comment.getContent() }}<p>
+    <small>Publier le : {{ comment.getPublishedAt()|date('Y-m-d') }}</small>
+  {% endfor %}
+
   {% include "HomeBundle:Display:form.html.twig" %}
 
 {% endblock %}

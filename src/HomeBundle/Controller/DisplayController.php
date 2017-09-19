@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class DisplayController extends Controller
 {
@@ -95,11 +95,15 @@ class DisplayController extends Controller
 
         $article = $repository->find($id);
 
+        $comments = $this->getDoctrine()->getRepository('HomeBundle:Comment')
+                      ->findBy(array('articleId' => $article->getId()));
+
         $comment = new Comment();
 
         // On crée le FormBuilder grâce au service form factory
         $form = $this->get('form.factory')->createBuilder(FormType::class, $comment)
-          ->setAction($this->generateUrl('home_showarticle', ['id' => $article->getId()], true ))
+          ->setAction($this->generateUrl('home_createcomment'))
+          ->add('article_id', HiddenType::class, array('data' => $article->getId()))
           ->add('name',     TextType::class)
           ->add('content', TextareaType::class)
           ->add('save',      SubmitType::class)
@@ -107,7 +111,7 @@ class DisplayController extends Controller
         ;
 
         return $this->render('HomeBundle:Display:article.html.twig',
-          array('article' => $article, 'form' => $form->createView()));
+          array('article' => $article, 'comments' => $comments, 'form' => $form->createView()));
     }
 
 }

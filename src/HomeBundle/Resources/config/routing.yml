@@ -26,3 +26,7 @@ home_showarticle:
     path:     /articles/{id}/
     defaults: { _controller: HomeBundle:Display:show }
     methods: [GET]
+
+home_createcomment:
+    path:     /comments/
+    defaults: { _controller: HomeBundle:Comment:create }

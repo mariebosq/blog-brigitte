@@ -22,6 +22,13 @@ class Comment
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="article_id", type="integer")
+     */
+    private $articleId;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)
@@ -51,6 +58,30 @@ class Comment
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get article_id
+     *
+     * @return int
+     */
+    public function getArticleId()
+    {
+        return $this->articleId;
+    }
+
+    /**
+     * Set article_id
+     *
+     * @param string $articleId
+     *
+     * @return Comments
+     */
+    public function setArticleId($articleId)
+    {
+        $this->articleId = $articleId;
+
+        return $this;
     }
 
     /**
