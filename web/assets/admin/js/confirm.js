@@ -26,11 +26,6 @@ $(document).ready(function() {
         theHREF = $(this).attr("href");
         $("#dialog-confirm").dialog("open");
     });
-});
-
-//Gestion de la fenêtre pour le lien de la publication
-$(document).ready(function() {
-    var theHREF;
 
     $("#dialog-confirm-modif").dialog({
         resizable: false,
@@ -50,7 +45,6 @@ $(document).ready(function() {
     });
 
     $("a.confirmModalp").click(function(e) {
-
         e.preventDefault();
         theHREF = $(this).attr("href");
         $("#dialog-confirm-modif").dialog("open");

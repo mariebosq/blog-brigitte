@@ -114,4 +114,19 @@ class DisplayController extends Controller
           array('article' => $article, 'comments' => $comments, 'form' => $form->createView()));
     }
 
+    public function countAction() {
+
+      $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('AdminBundle:Article');
+
+        return $query = $repository->createQueryBuilder('a')
+          ->select('COUNT(article_id)', 'id')
+          ->innerJoin('comments')
+          ->where('id = $id_article')
+          ->setParameter(array('id_article' => $id_article))
+          ->getQuery()
+          ->getResult();
+      }
 }
