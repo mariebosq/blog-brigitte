@@ -53,6 +53,5 @@ class CommentController extends Controller
     } else {
       // Gérer l'erreur ici
     }
-
   }
 }
