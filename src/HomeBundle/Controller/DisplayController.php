@@ -59,6 +59,18 @@ class DisplayController extends Controller
         $stmt->execute();
         $listArticles = $stmt->fetchAll();
 
+        for ($i = 0; $i < count($listArticles); $i++)
+        {
+          //on coupe l'affichage de l'article à 255 caractères
+          $listArticles[$i]['content'] = substr($listArticles[$i]['content'], 55, 255);
+
+          //on ajoute trois petits points lorsque le mot ou la phrase est coupée
+          if (strlen($listArticles[$i]['content']) === 255) {
+            $listArticles[$i]['content'] = $listArticles[$i]['content'] . "...";
+          }
+
+        }
+
         return $this->render('HomeBundle:Display:images.html.twig', array(
           'listArticles' => $listArticles
         ));
@@ -95,6 +107,16 @@ class DisplayController extends Controller
       $stmt->execute();
       $listArticles = $stmt->fetchAll();
 
+      for ($i = 0; $i < count($listArticles); $i++)
+      {
+        $listArticles[$i]['content'] = substr($listArticles[$i]['content'], 55, 255);
+
+        if (strlen($listArticles[$i]['content']) === 255) {
+          $listArticles[$i]['content'] = $listArticles[$i]['content'] . "...";
+        }
+
+      }
+
         return $this->render('HomeBundle:Display:event.html.twig', array(
           'listArticles' => $listArticles
         ));
@@ -130,6 +152,16 @@ class DisplayController extends Controller
         $stmt = $repository->getConnection()->prepare($query);
         $stmt->execute();
         $listArticles = $stmt->fetchAll();
+
+        for ($i = 0; $i < count($listArticles); $i++)
+        {
+          $listArticles[$i]['content'] = substr($listArticles[$i]['content'], 55, 255);
+
+          if (strlen($listArticles[$i]['content']) === 255) {
+            $listArticles[$i]['content'] = $listArticles[$i]['content'] . "...";
+          }
+
+        }
 
         return $this->render('HomeBundle:Display:news.html.twig', array(
           'listArticles' => $listArticles
