@@ -6,7 +6,8 @@
     <section>
       <h1>{{ article.getTitle() }}</h1>
       <p>{{ article.getContent()|raw }}<p>
-      <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
+      <small>Publier le : {{ article.getPublishedAt()|date('d-m-Y') }}</small>
+
     </section>
   {% include "HomeBundle:Display:button.html.twig" %}
   {% endfor %}
