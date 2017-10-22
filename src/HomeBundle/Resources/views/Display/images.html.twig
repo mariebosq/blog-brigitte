@@ -4,12 +4,12 @@
 
   {% for article in listArticles %}
     <section>
-      <h1>{{ article['title'] }}</h1>
-      <p>{{ article['content']|raw }}<p>
-      <small>Publier le : {{ article['published_at'] | date('d-m-Y') }}</small>
-      <p>Nombre de commentaires : {{ article['nb_comments'] }}</p>
+      <h1 id="titre-article">{{ article['title'] }}</h1>
+      <p id="content-article">{{ article['content']|raw }}<p>
+      <p class="info-article">Publier le : {{ article['published_at'] | date('d-m-Y') }}</p>
+      <p class="info-article nb-comments">Nombre de commentaires : {{ article['nb_comments'] }}</p>
     </section>
-  {% include "HomeBundle:Display:button.html.twig" %}
+  <p id="show-article">{% include "HomeBundle:Display:button.html.twig" %}</p>
   {% endfor %}
 
 {% endblock %}
