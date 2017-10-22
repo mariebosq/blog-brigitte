@@ -4,9 +4,10 @@
 
   {% for article in listArticles %}
     <section>
-      <h1>{{ article.getTitle() }}</h1>
-      <p>{{ article.getContent()|raw }}<p>
-      <small>Publier le : {{ article.getPublishedAt()|date('d-m-Y') }}</small>
+      <h1>{{ article['title'] }}</h1>
+      <p>{{ article['content']|raw }}<p>
+      <small>Publier le : {{ article['published_at'] | date('d-m-Y') }}</small>
+      <p>Nombre de commentaires : {{ article['nb_comments'] }}</p>
     </section>
   {% include "HomeBundle:Display:button.html.twig" %}
   {% endfor %}

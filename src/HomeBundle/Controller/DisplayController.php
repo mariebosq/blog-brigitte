@@ -33,16 +33,31 @@ class DisplayController extends Controller
     {
       $repository = $this
         ->getDoctrine()
-        ->getManager()
-        ->getRepository('AdminBundle:Article');
+        ->getManager();
 
-        $query = $repository->createQueryBuilder('a')
-          ->where("a.category = 'en-images'")
-          ->andWhere('a.publishedAt IS NOT NULL')
-          ->getQuery()
-        ;
+        // $query = $repository->createQueryBuilder('a')
+        //   ->where("a.category = 'en-images'")
+        //   ->andWhere('a.publishedAt IS NOT NULL')
+        //   ->getQuery()
+        // ;
+        $query = "
+          SELECT articles.id,
+                 articles.title,
+                 articles.content,
+                 articles.published_at,
+                 (
+                   SELECT COUNT(*)
+                   FROM comments
+                   WHERE comments.article_id = articles.id
+                 ) AS nb_comments
+          FROM articles
+          WHERE articles.published_at IS NOT NULL
+          AND articles.category = 'en-images'
+        ";
 
-        $listArticles = $query->execute();
+        $stmt = $repository->getConnection()->prepare($query);
+        $stmt->execute();
+        $listArticles = $stmt->fetchAll();
 
         return $this->render('HomeBundle:Display:images.html.twig', array(
           'listArticles' => $listArticles
@@ -53,16 +68,32 @@ class DisplayController extends Controller
     {
       $repository = $this
         ->getDoctrine()
-        ->getManager()
-        ->getRepository('AdminBundle:Article');
+        ->getManager();
 
-      $query = $repository->createQueryBuilder('a')
-        ->where("a.category = 'actualites'")
-        ->andWhere('a.publishedAt IS NOT NULL')
-        ->getQuery()
-      ;
+      // $query = $repository->createQueryBuilder('a')
+      //   ->where("a.category = 'actualites'")
+      //   ->andWhere('a.publishedAt IS NOT NULL')
+      //   ->getQuery()
+      // ;
 
-        $listArticles = $query->execute();
+      $query = "
+        SELECT articles.id,
+               articles.title,
+               articles.content,
+               articles.published_at,
+               (
+                 SELECT COUNT(*)
+                 FROM comments
+                 WHERE comments.article_id = articles.id
+               ) AS nb_comments
+        FROM articles
+        WHERE articles.published_at IS NOT NULL
+        AND articles.category = 'actualites'
+      ";
+
+      $stmt = $repository->getConnection()->prepare($query);
+      $stmt->execute();
+      $listArticles = $stmt->fetchAll();
 
         return $this->render('HomeBundle:Display:event.html.twig', array(
           'listArticles' => $listArticles
@@ -73,16 +104,32 @@ class DisplayController extends Controller
     {
       $repository = $this
         ->getDoctrine()
-        ->getManager()
-        ->getRepository('AdminBundle:Article');
+        ->getManager();
 
-        $query = $repository->createQueryBuilder('a')
-          ->where("a.category = 'on-en-a-parle'")
-          ->andWhere('a.publishedAt IS NOT NULL')
-          ->getQuery()
-        ;
+        // $query = $repository->createQueryBuilder('a')
+        //   ->where("a.category = 'on-en-a-parle'")
+        //   ->andWhere('a.publishedAt IS NOT NULL')
+        //   ->getQuery()
+        // ;
 
-        $listArticles = $query->execute();
+        $query = "
+          SELECT articles.id,
+                 articles.title,
+                 articles.content,
+                 articles.published_at,
+                 (
+                   SELECT COUNT(*)
+                   FROM comments
+                   WHERE comments.article_id = articles.id
+                 ) AS nb_comments
+          FROM articles
+          WHERE articles.published_at IS NOT NULL
+          AND articles.category = 'on-en-a-parle'
+        ";
+
+        $stmt = $repository->getConnection()->prepare($query);
+        $stmt->execute();
+        $listArticles = $stmt->fetchAll();
 
         return $this->render('HomeBundle:Display:news.html.twig', array(
           'listArticles' => $listArticles
@@ -114,19 +161,4 @@ class DisplayController extends Controller
           array('article' => $article, 'comments' => $comments, 'form' => $form->createView()));
     }
 
-    public function countAction() {
-
-      $repository = $this
-        ->getDoctrine()
-        ->getManager()
-        ->getRepository('AdminBundle:Article');
-
-        return $query = $repository->createQueryBuilder('a')
-          ->select('COUNT(article_id)', 'id')
-          ->innerJoin('comments')
-          ->where('id = $id_article')
-          ->setParameter(array('id_article' => $id_article))
-          ->getQuery()
-          ->getResult();
-      }
 }
