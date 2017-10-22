@@ -9,8 +9,8 @@
 
   <p>Commentaires:<p>
   {% for comment in comments %}
-    <p class="comment">{{ comment.getName() }}</p>
-    <p class="comment">{{ comment.getContent() }}</p>
+    <h1>{{ comment.getName() }}</h1>
+    <p>{{ comment.getContent()|raw }}<p>
     <small>Publier le : {{ comment.getPublishedAt()|date('Y-m-d') }}</small>
   {% endfor %}
 

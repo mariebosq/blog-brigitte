@@ -5,7 +5,7 @@
   {% for article in listArticles %}
     <section>
       <h1>{{ article.getTitle() }}</h1>
-      <p>{{ article.getContent() }}<p>
+      <p>{{ article.getContent()|raw }}<p>
       <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
     </section>
   {% include "HomeBundle:Display:button.html.twig" %}
