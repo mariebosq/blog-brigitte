@@ -180,16 +180,15 @@ footer #licence {
 	text-align: right;
 }
 /*IMAGES NEWS EVENT VIEW*/
-#titre-article, #show-article {
-	text-align: center;
-}
-
-#content-article {
+#article {
 	border-right: solid 1px #DCDCDC;
 	border-bottom: solid 1px #DCDCDC;
 	box-shadow: 8px 8px 12px #aaa;
 	padding: 20px 0px 20px 20px;
-
+	margin-bottom: 50px;
+}
+#titre-article, #show-article {
+	text-align: center;
 }
 
 .info-article {
