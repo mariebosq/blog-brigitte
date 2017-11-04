@@ -7,3 +7,16 @@
   color: grey;
   text-decoration: none;
 }
+/*FORM LOGIN*/
+#username, #password, #_submit {
+  display: block;
+  margin: auto;
+}
+#login {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+label {
+  padding : 10px;
+}
