@@ -4,7 +4,6 @@ namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Entity\Article;
-use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Repository\ArticlesRepository;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -12,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 class ArticleController extends Controller
@@ -61,9 +61,15 @@ class ArticleController extends Controller
     // On crée le FormBuilder grâce au service form factory
     $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
       ->add('slug',     TextType::class)
-      ->add('category',     TextType::class)
+      ->add('category',     ChoiceType::class, array(
+        'choices' => array(
+          'En Images'     => 'en-images',
+          'On en a parlé' => 'on-en-a-parle',
+          'Évenements'    => 'evenements'
+        )
+      ))
       ->add('title',     TextType::class)
-      ->add('content', CKEditorType::class, array('config_name' => 'basic_config'))
+      ->add('content',   TextareaType::class)
       ->add('save',      SubmitType::class)
       ->getForm()
     ;
@@ -97,9 +103,15 @@ class ArticleController extends Controller
       $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
         ->setAction($this->generateUrl('admin_create_article'))
         ->add('slug',     TextType::class)
-        ->add('category',     TextType::class)
+        ->add('category',     ChoiceType::class, array(
+          'choices' => array(
+            'En Images'     => 'en-images',
+            'On en a parlé' => 'on-en-a-parle',
+            'Évenements'    => 'evenements'
+          )
+        ))
         ->add('title',     TextType::class)
-        ->add('content', CKEditorType::class, array('config_name' => 'basic_config'))
+        ->add('content',   TextareaType::class)
         ->add('save',      SubmitType::class)
         ->getForm()
       ;
@@ -122,12 +134,17 @@ class ArticleController extends Controller
     $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
       ->setAction($this->generateUrl('admin_update_article', ['id' => $article->getId()], true ))
       ->setMethod('PUT')
-      ->add('slug',     TextType::class)
-      ->add('category',     TextType::class)
-      ->add('title',     TextType::class)
-      ->add('content', CKEditorType::class, array('config_name' => 'basic_config'))
-      //->add('published', CheckboxType::class, array('required' => false))
-      ->add('save',      SubmitType::class)
+      ->add('slug',         TextType::class)
+      ->add('category',     ChoiceType::class, array(
+        'choices' => array(
+          'En Images'     => 'en-images',
+          'On en a parlé' => 'on-en-a-parle',
+          'Évenements'    => 'evenements'
+        )
+      ))
+      ->add('title',        TextType::class)
+      ->add('content',   TextareaType::class)
+      ->add('save',         SubmitType::class)
       ->getForm()
     ;
 
