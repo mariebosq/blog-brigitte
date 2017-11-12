@@ -8,6 +8,40 @@
   </div>
 
 
-<script> $(function() { $('textarea').froalaEditor() }); </script>
+<script>
+    $(function() {
+        $('textarea').froalaEditor({
+            // Set the image upload parameter.
+            imageUploadParam: 'imageFile',
+
+            // Set the image upload URL.
+            imageUploadURL: '/admin/images',
+
+            // Additional upload params.
+            imageUploadParams: { imageName: 'myimagename'},
+
+            // Set request type.
+            imageUploadMethod: 'POST',
+
+            // Set max image size to 5MB.
+            imageMaxSize: 5 * 1024 * 1024,
+
+            // Allow to upload PNG and JPG.
+            imageAllowedTypes: ['jpeg', 'jpg', 'png']
+          })
+          .on('froalaEditor.image.beforeUpload', function (e, editor, images) {
+            // Return false if you want to stop the image upload.
+          })
+          .on('froalaEditor.image.uploaded', function (e, editor, response) {
+            // Image was uploaded to the server.
+          })
+          .on('froalaEditor.image.inserted', function (e, editor, $img, response) {
+            // Image was inserted in the editor.
+          })
+          .on('froalaEditor.image.replaced', function (e, editor, $img, response) {
+            // Image was replaced in the editor.
+          })
+      });
+</script>
 
 {% endblock %}

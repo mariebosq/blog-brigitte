@@ -53,3 +53,8 @@ admin_edit_article:
 admin_delete_article:
     path:     /articles/{id}/delete
     defaults: { _controller: AdminBundle:Article:delete }
+
+admin_create_image:
+    path:     /images
+    defaults: { _controller: AdminBundle:Image:create }
+    methods: [POST]
