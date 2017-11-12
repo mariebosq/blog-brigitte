@@ -37,12 +37,14 @@
 			      <li><a href="#">?</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
-			      <li><a href="{{ url('logout') }}" id="logout"><span class="glyphicon glyphicon-log-in"></span> Déconnection</a></li>
+						<li><a href="{{ url('login') }}"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
 			    </ul>
 			  </div>
 			</nav>
     </header>
-      {% block body %}
-      {% endblock %}
-  </body>
-<html>
+
+    <body>
+      <section id="login">
+        {% block fos_user_content %}{% endblock %}
+      </section>
+    </body>
