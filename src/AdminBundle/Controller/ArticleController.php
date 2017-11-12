@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\DateTime;
+use AdminBundle\Service\FileUploader;
 
 class ArticleController extends Controller
 {
@@ -89,7 +90,7 @@ class ArticleController extends Controller
     }
   }
 
-  public function newAction() {
+  public function newAction(FileUploader $fileUploader) {
       // On crée un objet Article
       $article = new Article();
 
@@ -104,6 +105,11 @@ class ArticleController extends Controller
         ->getForm()
       ;
 
+      if ($form->isSubmitted() && $form->isValid()) {
+        $file = $article->getBrochure();
+        $fileName = $fileUploader->upload($file);
+
+        $article->setBrochure($fileName);
 
       // À ce stade, le formulaire n'est pas valide car :
       // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
