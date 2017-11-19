@@ -130,6 +130,7 @@ class ArticleController extends Controller
         'form' => $form->createView(),
       ));
   }
+}  
 
   public function editAction($id)
   {
