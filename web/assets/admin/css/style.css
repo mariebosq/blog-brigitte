@@ -26,3 +26,6 @@ label {
 .hidden {
   display: none;
 }
+#edit {
+  margin-left: 20px;
+}
