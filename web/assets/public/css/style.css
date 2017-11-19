@@ -150,6 +150,10 @@ footer #licence {
 	margin-bottom: 40px;
 }
 
+.right {
+	text-align: right;
+}
+
 .btn {
 	background-color: rgb(119, 244, 215);
 	color: white;
@@ -229,16 +233,39 @@ footer #licence {
 		display: block;
 		width: 100%;
 	}
-	/*INDEX*/
+	/*INDEX & WRITING*/
 	h2 {
 		text-align: center;
 	}
 
-	#description p, #autobiography p {
+	.descriptionbook, .description-book {
+		margin-bottom: 40px;
+	}
+	#description p, #autobiography p, .summary, .descriptionbook p, .descriptionbook h3 {
 		text-align: justify;
 	}
 
+	.descriptionbook img, .description-book img {
+		float: none;
+	}
+
+	.center p, .center, .center a {
+		text-align: center;
+	}
+
 	.books {
+		width: 100%;
+	}
+
+	/*PAGES DYNAMIQUE*/
+	#content-article {
+		text-align: justify;
+		margin-right: 10px;
+	}
+
+	.info-article {
+		display: block;
+		text-align: center;
 		width: 100%;
 	}
 }
