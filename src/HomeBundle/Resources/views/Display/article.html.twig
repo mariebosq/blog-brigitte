@@ -3,7 +3,7 @@
 {% block body %}
 
   <h1>{{ article.getTitle() }}</h1>
-  <p>{{ article.getContent() }}<p>
+  <p>{{ article.getContent()|raw }}<p>
   <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
 
 
