@@ -21,4 +21,7 @@ services:
         #       - { name: kernel.event_subscriber }
 
     # makes classes in src/AppBundle available to be used as services
+    AdminBundle\Service\FileUploader:
+        arguments:
+            $targetDir: '/web/images/'
     # this creates a service per class whose id is the fully-qualified class name
