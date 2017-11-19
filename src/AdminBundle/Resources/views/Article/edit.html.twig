@@ -4,7 +4,9 @@
 
   <h2><i class="fa fa-pencil"></i> Editer un article</h2>
   <div class="well">
-    {{ form(form) }}
+    {{ form(form)|trans|raw }}
   </div>
-  
+
+
+    <script> $(function() { $('textarea').froalaEditor() }); </script>
 {% endblock %}

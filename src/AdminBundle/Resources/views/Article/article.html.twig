@@ -3,8 +3,8 @@
 {% block body %}
 
   <h1>{{ article.getTitle() }}</h1>
-  <p>{{ article.getContent() }}<p>
+  <p>{{ article.getContent() | raw }}<p>
   <p>Catégorie : {{ article.getCategory() }}<p>
-  <small>Créer le : {{ article.getCreatedAt()|date('d/m/Y') }}</small>
+  <small>Créé le : {{ article.getCreatedAt()|date('d/m/Y') }}</small>
 
 {% endblock %}
