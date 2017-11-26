@@ -6,13 +6,16 @@
   <p>{{ article.getContent()|raw }}<p>
   <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
 
-
-  <p>Commentaires:<p>
+  <h4 id="nbcomments">{{ comments | length }} Commentaires</h4>
   {% for comment in comments %}
-    <h1>{{ comment.getName() }}</h1>
-    <p>{{ comment.getContent()|raw }}<p>
-    <small>Publier le : {{ comment.getPublishedAt()|date('Y-m-d') }}</small>
+<section id="comment">
+    <span id="pseudocomment">{{ comment.getName() }}
+    <a id="repondre" href="#formcomment">Répondre</a></span>
+    <small><i class="fa fa-calendar-o"></i>Publier le : {{ comment.getPublishedAt()|date('d-m-Y') }}</small>
+    <p id="contentcomment">{{ comment.getContent()|raw }}<p>
+</section>
   {% endfor %}
+
 
   {% include "HomeBundle:Display:form.html.twig" %}
 
