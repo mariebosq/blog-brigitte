@@ -61,8 +61,8 @@ class ArticleController extends Controller
 
     // On crée le FormBuilder grâce au service form factory
     $form = $this->get('form.factory')->createBuilder(FormType::class, $article)
-      ->add('slug',     TextType::class)
-      ->add('category',     ChoiceType::class, array(
+      ->add('slug',      TextType::class)
+      ->add('category',  ChoiceType::class, array(
         'choices' => array(
           'En Images'     => 'en-images',
           'On en a parlé' => 'on-en-a-parle',
@@ -130,7 +130,7 @@ class ArticleController extends Controller
         'form' => $form->createView(),
       ));
   }
-}  
+}
 
   public function editAction($id)
   {
