@@ -21,37 +21,37 @@ class CommentController extends Controller
 {
   public function createAction(Request $request)
   {
+    // On initialize le nouveau commentaire
+    $now = new \DateTime();
     $comment = new Comment();
 
-    // On crée le FormBuilder grâce au service form factory
+    // On remplit les valeurs
+    $comment->setArticleId($request->request->get('form')['article_id']);
+    $comment->setContent($request->request->get('form')['content']);
+    $comment->setName($request->request->get('form')['name']);
+    $comment->setPublishedAt($now);
+
+    // On le sauvegarde
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($comment);
+    $em->flush();
+
+    // On recupere l'article associé
+    $article= $em->getRepository('AdminBundle:Article')->find($request->request->get('form')['article_id']);
+    $comments = $this->getDoctrine()->getRepository('HomeBundle:Comment')
+                  ->findBy(array('articleId' => $article->getId()));
+
+    // On réaffiche le FormBuilder grâce au service form factory
     $form = $this->get('form.factory')->createBuilder(FormType::class, $comment)
-      ->add('article_id',     HiddenType::class)
-      ->add('name',     TextType::class)
-      ->add('content', TextareaType::class)
-      ->add('save',      SubmitType::class)
+      ->setAction($this->generateUrl('home_createcomment'))
+      ->add('article_id', HiddenType::class, array('data' => $article->getId()))
+      ->add('name',       TextType::class)
+      ->add('content',    TextareaType::class)
+      ->add('save',       SubmitType::class)
       ->getForm()
     ;
 
-    $now = new \DateTime();
-    $comment->setPublishedAt($now);
-
-    // On fait le lien Requête <-> Formulaire
-    // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-    $form->handleRequest($request);
-
-    if ($form->isValid()) {
-    // On vérifie que les valeurs entrées sont correctes
-    // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-      // On enregistre notre objet $advert dans la base de données, par exemple
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($comment);
-      $em->flush();
-
-      $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-
-      return $this->redirectToRoute('home_homepage');
-    } else {
-      // Gérer l'erreur ici
-    }
+    return $this->render('HomeBundle:Display:article.html.twig',
+      array('article' => $article, 'comments' => $comments, 'form' => $form->createView()));
   }
 }
