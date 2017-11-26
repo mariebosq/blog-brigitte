@@ -183,9 +183,9 @@ class DisplayController extends Controller
         $form = $this->get('form.factory')->createBuilder(FormType::class, $comment)
           ->setAction($this->generateUrl('home_createcomment'))
           ->add('article_id', HiddenType::class, array('data' => $article->getId()))
-          ->add('name',     TextType::class)
-          ->add('content', TextareaType::class)
-          ->add('save',      SubmitType::class)
+          ->add('name',       TextType::class)
+          ->add('content',    TextareaType::class)
+          ->add('save',       SubmitType::class)
           ->getForm()
         ;
 
