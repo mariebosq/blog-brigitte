@@ -130,7 +130,7 @@ class ArticleController extends Controller
         'form' => $form->createView(),
       ));
   }
-}  
+}
 
   public function editAction($id)
   {
@@ -226,7 +226,6 @@ class ArticleController extends Controller
             'paramsRoute' => array()
         );
 
-        var_dump($pagination);
 
         return $this->render('AdminBundle:Article:index.html.twig', array(
             'articles' => $articles,
