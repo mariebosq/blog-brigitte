@@ -226,7 +226,6 @@ class ArticleController extends Controller
             'paramsRoute' => array()
         );
 
-        var_dump($pagination);
 
         return $this->render('AdminBundle:Article:index.html.twig', array(
             'articles' => $articles,
