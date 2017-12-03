@@ -134,7 +134,7 @@ footer #licence {
 }
 
 
-#description p, #autobiography p, #description-books p {
+#description p, #autobiography p, #description-books p, .blocarticle {
 	line-height: 25pt;
 }
 
@@ -234,7 +234,7 @@ footer #licence {
 		text-align: center;
 	}
 
-	#description p, #autobiography p {
+	#description p, #autobiography p, .blocarticle {
 		text-align: justify;
 	}
 
