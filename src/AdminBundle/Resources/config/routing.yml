@@ -53,3 +53,10 @@ admin_edit_article:
 admin_delete_article:
     path:     /articles/{id}/delete
     defaults: { _controller: AdminBundle:Article:delete }
+
+admin_index_comment:
+    path:     /comments
+    defaults: { _controller: AdminBundle:Comment:index }
+    requirements:
+        page:  \d+
+    methods: [GET]
