@@ -5,6 +5,7 @@ namespace HomeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Entity\Article;
 use HomeBundle\Entity\Comment;
+use \Doctrine\Common\Collections\Criteria;
 
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -49,6 +50,7 @@ class DisplayController extends Controller
                    SELECT COUNT(*)
                    FROM comments
                    WHERE comments.article_id = articles.id
+                   AND comments.published_at IS NOT NULL
                  ) AS nb_comments
           FROM articles
           WHERE articles.published_at IS NOT NULL
@@ -97,6 +99,7 @@ class DisplayController extends Controller
                  SELECT COUNT(*)
                  FROM comments
                  WHERE comments.article_id = articles.id
+                 AND comments.published_at IS NOT NULL
                ) AS nb_comments
         FROM articles
         WHERE articles.published_at IS NOT NULL
@@ -143,6 +146,7 @@ class DisplayController extends Controller
                    SELECT COUNT(*)
                    FROM comments
                    WHERE comments.article_id = articles.id
+                   AND comments.published_at IS NOT NULL
                  ) AS nb_comments
           FROM articles
           WHERE articles.published_at IS NOT NULL
@@ -170,16 +174,19 @@ class DisplayController extends Controller
 
     public function showAction($id)
     {
-        $repository = $this->getDoctrine()->getRepository('AdminBundle:Article');
+        $articles_repository = $this->getDoctrine()->getRepository('AdminBundle:Article');
+        $comments_repository = $this->getDoctrine()->getRepository('AdminBundle:Comment');
 
-        $article = $repository->find($id);
+        $article = $articles_repository->find($id);
 
-        $comments = $this->getDoctrine()->getRepository('HomeBundle:Comment')
-                      ->findBy(array('articleId' => $article->getId()));
+        $criteria = new \Doctrine\Common\Collections\Criteria();
+        $criteria->where(Criteria::expr()->neq('publishedAt', null))
+                 ->andWhere(Criteria::expr()->eq('articleId', $id));
 
-        $comment = new Comment();
+        $comments = $comments_repository->matching($criteria);
 
         // On crée le FormBuilder grâce au service form factory
+        $comment = new Comment();
         $form = $this->get('form.factory')->createBuilder(FormType::class, $comment)
           ->setAction($this->generateUrl('home_createcomment'))
           ->add('article_id', HiddenType::class, array('data' => $article->getId()))

@@ -1,0 +1,54 @@
+{% extends "AdminBundle:Article:layout.html.twig" %}
+
+{% block body %}
+  {% if listComments is not empty %}
+
+  <section class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Pseudo</th>
+          <th>Date de Publication</th>
+          <th>Contenu du commentaire</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for comment in listComments %}
+        <tr>
+          <td><a href="{{ url('admin_show_comment', { 'id' : comment.id }) }}">{{ comment.getName() }}</a></td>
+          <td>{{ comment.getPublishedAt()|date('Y-m-d') }}</td>
+          <td>{{ comment.getContent() | raw }}</td>
+          <td>
+          <a class="confirmModal btn btn-warning btn-md" href="{{ path('admin_delete_comment', { 'id' : comment.id }) }}">Supprimer</a>
+
+          {% if comment.getPublishedAt() %}
+              <a class="btn btn-primary btn-md depublish" href="{{ path('admin_depublish_comment', { 'id' : comment.id }) }}">Dépublier</a>
+          {% else %}
+              <a class="confirmModalp btn btn-primary btn-md" href="{{ path('admin_publish_comment', { 'id' : comment.id }) }}">Publier</a></p>
+          {% endif %}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </section>
+  {% else %}
+      <h1 id="noarticle">Vous n'avez pas encore de commentaire !</h1>
+  {% endif %}
+
+  <div id="dialog-confirm" title="Confirmation de la suppression" style="display:none;">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+      Etes-vous sûr de vouloir supprimer cet élément ?
+      </p>
+  </div>
+
+  <div id="dialog-confirm-modif" title="Confirmation de la publication" style="display:none;">
+    <p>
+      <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+      Etes-vous sûr de vouloir publier ce commentaire ?
+      </p>
+  </div>
+
+  {% include "AdminBundle:Article:pagination.html.twig" with { 'pagination': pagination } %}
+{% endblock %}
