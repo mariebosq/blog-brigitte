@@ -1,0 +1,9 @@
+{% extends "AdminBundle:Article:layout.html.twig" %}
+
+{% block body %}
+
+  <h1>{{ comment.getName() }}</h1>
+  <p>{{ comment.getContent() | raw }}<p>
+  <small>Créé le : {{ comment.getPublishedAt()|date('d/m/Y') }}</small>
+
+{% endblock %}
