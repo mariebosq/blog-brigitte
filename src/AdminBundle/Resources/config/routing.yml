@@ -60,3 +60,24 @@ admin_index_comment:
     requirements:
         page:  \d+
     methods: [GET]
+
+admin_show_comment:
+    path:     /comment/{id}/
+    defaults: { _controller: AdminBundle:Comment:show }
+    methods: [GET]
+
+admin_delete_comment:
+    path:     /comment/{id}/delete
+    defaults: { _controller: AdminBundle:Comment:delete }
+
+# Envoyer le formulaire d'édition
+admin_publish_comment:
+    path:     /comment/{id}/publish
+    defaults: { _controller: AdminBundle:Comment:publish }
+    methods: [GET]
+
+# Envoyer le formulaire d'édition
+admin_depublish_comment:
+    path:     /comment/{id}/depublish
+    defaults: { _controller: AdminBundle:Comment:depublish }
+    methods: [GET]

@@ -9,16 +9,24 @@
         <tr>
           <th>Pseudo</th>
           <th>Date de Publication</th>
+          <th>Contenu du commentaire</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
       {% for comment in listComments %}
         <tr>
-          <td><a href="#">{{ comment.getContent() }}</a></td>
+          <td><a href="{{ url('admin_show_comment', { 'id' : comment.id }) }}">{{ comment.getName() }}</a></td>
           <td>{{ comment.getPublishedAt()|date('Y-m-d') }}</td>
-          <td><a class="btn btn-success btn-md" href="#">Publier</a>
-          <a class="confirmModal btn btn-warning btn-md" href="#">Supprimer</a>
+          <td>{{ comment.getContent() | raw }}</td>
+          <td>
+          <a class="confirmModal btn btn-warning btn-md" href="{{ path('admin_delete_comment', { 'id' : comment.id }) }}">Supprimer</a>
+
+          {% if comment.getPublishedAt() %}
+              <a class="btn btn-primary btn-md depublish" href="{{ path('admin_depublish_comment', { 'id' : comment.id }) }}">Dépublier</a>
+          {% else %}
+              <a class="confirmModalp btn btn-primary btn-md" href="{{ path('admin_publish_comment', { 'id' : comment.id }) }}">Publier</a></p>
+          {% endif %}</td>
         </tr>
       </tbody>
       {% endfor %}

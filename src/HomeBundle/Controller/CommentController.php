@@ -22,14 +22,14 @@ class CommentController extends Controller
   public function createAction(Request $request)
   {
     // On initialize le nouveau commentaire
-    $now = new \DateTime();
+    
     $comment = new Comment();
 
     // On remplit les valeurs
     $comment->setArticleId($request->request->get('form')['article_id']);
     $comment->setContent($request->request->get('form')['content']);
     $comment->setName($request->request->get('form')['name']);
-    $comment->setPublishedAt($now);
+    $comment->setPublishedAt();
 
     // On le sauvegarde
     $em = $this->getDoctrine()->getManager();
