@@ -181,7 +181,7 @@ class DisplayController extends Controller
 
         $criteria = new \Doctrine\Common\Collections\Criteria();
         $criteria->where(Criteria::expr()->neq('publishedAt', null))
-                 ->where(Criteria::expr()->eq('articleId', $id));
+                 ->andWhere(Criteria::expr()->eq('articleId', $id));
 
         $comments = $comments_repository->matching($criteria);
 
