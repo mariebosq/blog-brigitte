@@ -4,14 +4,14 @@
 
   <h1>{{ article.getTitle() }}</h1>
   <section class="blocarticle">{{ article.getContent()|raw }}</section>
-  <small>Publier le : {{ article.getPublishedAt()|date('Y-m-d') }}</small>
+  <small>Publier le : {{ article.getPublishedAt()|date('d/m/Y G:i') }}</small>
 
   <h4 id="nbcomments">{{ comments | length }} Commentaires</h4>
   {% for comment in comments %}
 <section id="comment">
     <span id="pseudocomment">{{ comment.getName() }}
     <a id="repondre" href="#formcomment">Répondre</a></span>
-    <small><i class="fa fa-calendar-o"></i>Publier le : {{ comment.getPublishedAt()|date('d-m-Y') }}</small>
+    <small><i class="fa fa-calendar-o"></i>Publier le : {{ comment.getPublishedAt()|date('d/m/Y G:i') }}</small>
     <p id="contentcomment">{{ comment.getContent()|raw }}<p>
 </section>
   {% endfor %}
