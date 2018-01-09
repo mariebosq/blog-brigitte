@@ -29,3 +29,13 @@ label {
 #edit {
   margin-left: 20px;
 }
+
+/*AFFICHAGE DES ARTICLES OU COMMENTAIRES*/
+#contenttitle {
+  font-family: 'Lobster Two', cursive;
+}
+#articlecomment {
+  margin: 30px 100px;
+  line-height: 30px;
+  text-align: justify;
+}
