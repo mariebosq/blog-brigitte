@@ -2,8 +2,10 @@
 
 {% block body %}
 
-  <h1>{{ comment.getName() }}</h1>
-  <p>{{ comment.getContent() | raw }}<p>
-  <small>Créé le : {{ comment.getPublishedAt()|date('d/m/Y') }}</small>
+  <section id="articlecomment">
+    <h1 id="contenttitle">{{ comment.getName() }}</h1>
+    <p>{{ comment.getContent() | raw }}<p>
+    <small>Créé le : {{ comment.getPublishedAt()|date('d/m/Y') }}</small>
+  </section>
 
 {% endblock %}
