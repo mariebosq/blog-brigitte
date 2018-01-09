@@ -2,9 +2,10 @@
 
 {% block body %}
 
-  <h1>{{ article.getTitle() }}</h1>
-  <p>{{ article.getContent() | raw }}<p>
-  <p>Catégorie : {{ article.getCategory() }}<p>
-  <small>Créé le : {{ article.getCreatedAt()|date('d/m/Y') }}</small>
-
+  <section id="articlecomment">
+    <h1 id="contenttitle">{{ article.getTitle() }}</h1>
+    <p>{{ article.getContent() | raw }}<p>
+    <p>Catégorie : {{ article.getCategory() }}<p>
+    <small>Créé le : {{ article.getCreatedAt()|date('d/m/Y') }}</small>
+  </section>
 {% endblock %}
