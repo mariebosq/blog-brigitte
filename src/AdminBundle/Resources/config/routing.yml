@@ -54,6 +54,12 @@ admin_delete_article:
     path:     /articles/{id}/delete
     defaults: { _controller: AdminBundle:Article:delete }
 
+# Afficher le nombre de commentaires à valider
+admin_count_comment:
+   path:    /comment/count
+   defaults: { _controller: AdminBundle:Comment:count }
+   methods: [GET]
+
 admin_index_comment:
     path:     /comments
     defaults: { _controller: AdminBundle:Comment:index }

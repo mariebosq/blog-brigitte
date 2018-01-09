@@ -84,4 +84,14 @@ class CommentController extends Controller
 
     return $this->redirectToRoute('admin_index_comment');
   }
+
+  public function countAction()
+  {
+    $q = Doctrine_Query::create()
+    ->from('comments')
+    ->where('comments.published_at = NULL');
+
+    $countcomments = $q->execute();
+    var_dump("ausecour");
+  }
 }

@@ -32,7 +32,7 @@
 	    <!-- Include Editor JS files. -->
 	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/froala_editor.pkgd.min.js"></script>
 
-		<script type="text/javascript" src="{{ asset('assets/admin/js/confirm.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('assets/admin/js/confirm.js') }}"></script>
 
 		<title>Brigitte Joseph-Jeanneney</title>
 	</head>
@@ -46,7 +46,7 @@
 			    <ul class="nav navbar-nav">
 			      <li class="active"><a href="{{ url('admin_homepage') }}">Mes articles</a></li>
 			      <li><a href="{{ url('admin_new_article') }}">Création d'un nouvel article</a></li>
-						<li><a href="{{ url('admin_index_comment') }}">Valider commentaire</a></li>
+						<li><a id="validcom" href="{{ url('admin_index_comment') }}">Valider commentaire</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
 			      <li><a href="{{ url('logout') }}" id="logout"><span class="glyphicon glyphicon-log-in"></span> Déconnection</a></li>
