@@ -17,7 +17,13 @@
       {% for comment in listComments %}
         <tr>
           <td><a href="{{ url('admin_show_comment', { 'id' : comment.id }) }}">{{ comment.getName() }}</a></td>
-          <td>{{ comment.getPublishedAt()|date('Y-m-d') }}</td>
+          <td>
+            {% if comment.getPublishedAt() %}
+              {{ comment.getPublishedAt()|date('d/m/Y G:i') }}
+            {% else %}
+              Non publié
+            {% endif %}
+          </td>
           <td>{{ comment.getContent() | raw }}</td>
           <td>
           <a class="confirmModal btn btn-warning btn-md" href="{{ path('admin_delete_comment', { 'id' : comment.id }) }}">Supprimer</a>
