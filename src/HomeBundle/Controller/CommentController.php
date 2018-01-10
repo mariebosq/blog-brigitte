@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use \Doctrine\Common\Collections\Criteria;
 
 
 use Symfony\Component\Debug\Debug;
@@ -36,6 +37,7 @@ class CommentController extends Controller
     $em->persist($comment);
     $em->flush();
 
+
     // On recupere l'article associé
     $article= $em->getRepository('AdminBundle:Article')->find($request->request->get('form')['article_id']);
     $comments = $this->getDoctrine()->getRepository('HomeBundle:Comment')
@@ -51,7 +53,6 @@ class CommentController extends Controller
       ->getForm()
     ;
 
-    return $this->render('HomeBundle:Display:article.html.twig',
-      array('article' => $article, 'comments' => $comments, 'form' => $form->createView()));
+    return $this->redirectToRoute('home_showarticle', array('id' => $article->getId()));
   }
 }
