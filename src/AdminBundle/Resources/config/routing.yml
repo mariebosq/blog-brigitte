@@ -56,7 +56,7 @@ admin_delete_article:
 
 # Afficher le nombre de commentaires à valider
 admin_count_comment:
-   path:    /comment/count
+   path:     /comment/count/
    defaults: { _controller: AdminBundle:Comment:count }
    methods: [GET]
 

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Repository\CommentRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Symfony\Component\Debug\Debug;
 
@@ -87,11 +88,20 @@ class CommentController extends Controller
 
   public function countAction()
   {
-    $q = Doctrine_Query::create()
-    ->from('comments')
-    ->where('comments.published_at = NULL');
+    $repository = $this
+      ->getDoctrine()
+      ->getManager();
 
-    $countcomments = $q->execute();
-    var_dump("ausecour");
+    $query = "
+      SELECT *
+      FROM comments
+      WHERE published_at IS NULL
+    ";
+
+    $stmt = $repository->getConnection()->prepare($query);
+    $stmt->execute();
+    $comments = $stmt->fetchAll();
+
+    return new JsonResponse(count($comments));
   }
 }

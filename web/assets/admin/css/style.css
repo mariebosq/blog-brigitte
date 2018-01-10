@@ -1,3 +1,9 @@
+/*BARRE DE NAVIGATION*/
+#validcom span {
+  color: red;
+  font-weight: bold;
+}
+
 /*Titre d'article du index*/
 .title-article {
   list-style-type: none;

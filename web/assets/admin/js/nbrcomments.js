@@ -1,6 +1,6 @@
 $.ajax({
-  url: "http://localhost:8000/admin/admin_count_comment",
+  url: "http://localhost:8000/admin/comment/count",
   method: 'GET'
 }).done(function(result) {
-  $("#validcom").html(result);
+  $("#validcom span").html(result);
 });
