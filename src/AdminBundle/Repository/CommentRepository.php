@@ -47,7 +47,7 @@ class CommentRepository extends EntityRepository
       }
 
       $qb = $this->createQueryBuilder('a')
-          ->orderBy('a.publishedAt', 'DESC');
+          ->orderBy('a.createdAt', 'DESC');
 
       $query = $qb->getQuery();
 
