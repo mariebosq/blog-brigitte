@@ -96,7 +96,7 @@ class ArticleController extends Controller
     }
   }
 
-  public function newAction(FileUploader $fileUploader) {
+  public function newAction() {
       // On crée un objet Article
       $article = new Article();
 
@@ -117,12 +117,6 @@ class ArticleController extends Controller
         ->getForm()
       ;
 
-      if ($form->isSubmitted() && $form->isValid()) {
-        $file = $article->getBrochure();
-        $fileName = $fileUploader->upload($file);
-
-        $article->setBrochure($fileName);
-
       // À ce stade, le formulaire n'est pas valide car :
       // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
       // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
@@ -130,7 +124,7 @@ class ArticleController extends Controller
         'form' => $form->createView(),
       ));
   }
-}
+
 
   public function editAction($id)
   {
