@@ -138,6 +138,10 @@ footer #licence {
 	line-height: 25pt;
 }
 
+.descriptionbook h2 {
+	text-align: right;
+}
+
 .books {
 	display: inline-block;
 	width: 24%;
