@@ -204,49 +204,6 @@ footer #licence {
 .nb-comments {
 	text-align: right;
 }
-
-/*RESPONSIVE*/
-@media screen and (max-width: 1024px) {
-	/*GENERAL*/
-	header img, #description img, #autobiography img {
-		display: block;
-		float: none;
-		margin: 10px auto;
-	}
-
-	/*LAYOUT*/
-	header h1 {
-		font-size: 5rem;
-		text-align: center;
-	}
-
-	.row {
-		border: none;
-	}
-
-	.col-xs-12 {
-		border-top: 1px solid #DCDCDC;
-		border-bottom: 1px solid #DCDCDC;
-	}
-
-	footer #info, #index, #follow {
-		display: block;
-		width: 100%;
-	}
-	/*INDEX*/
-	h2 {
-		text-align: center;
-	}
-
-	#description p, #autobiography p, .blocarticle {
-		text-align: justify;
-	}
-
-	.books {
-		width: 100%;
-	}
-}
-
 /* ARTICLE */
 #comment {
 	padding-top: 28px;
@@ -264,9 +221,6 @@ footer #licence {
 #nbcomments::before, #nbcomments::after {
 	display: inline-block;
 	vertical-align: middle;
-}
-
-#nbcomments::before, #nbcomments::after {
 	height: 1px;
 	width: 80px;
 	background: #e85861;
@@ -311,4 +265,82 @@ small {
 
 #contentcomment {
 	margin-top: 15px;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 1024px) {
+	/*GENERAL*/
+	header img, #description img, #autobiography img {
+		display: block;
+		float: none;
+		margin: 10px auto;
+	}
+
+	/*LAYOUT*/
+	header h1 {
+		font-size: 5rem;
+		text-align: center;
+	}
+
+	.row {
+		border: none;
+	}
+
+	.col-xs-12 {
+		border-top: 1px solid #DCDCDC;
+		border-bottom: 1px solid #DCDCDC;
+	}
+
+	footer #info, #index, #follow {
+		display: block;
+		width: 100%;
+	}
+	/*INDEX*/
+	h2 {
+		text-align: center;
+	}
+
+	#description p, #autobiography p, .blocarticle {
+		text-align: justify;
+	}
+
+	#autobiography>p {
+		padding-top: 20px;
+	}
+
+	.books {
+		width: 100%;
+	}
+
+	#nbcomments::before, #nbcomments::after {
+		display: none;
+	}
+
+	.descriptionbook p, .description-book p {
+		text-align: justify;
+	}
+
+	.descriptionbook h3, .description-book h3, .descriptionbook h2, .description-book h2 {
+		text-align: center;
+	}
+
+	.description-book h3, .descriptionbook h3 {
+		margin-top: 50px;
+	}
+
+	.descriptionbook h2, .description-book h2 {
+		margin-top: 30px;
+	}
+	/*articles*/
+	.info-article {
+		display: block;
+		text-align: center;
+		margin: auto;
+		padding: 10px;
+	}
+
+	#content-article {
+		text-align: justify;
+		padding-right: 10px;
+	}
 }
