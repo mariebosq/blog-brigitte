@@ -1,11 +1,12 @@
-{% extends "AdminBundle:Article:layout.html.twig" %}
+{% extends "admin.html.twig" %}
 
 {% block body %}
+    <section id="articlecomment">
+        <h1 id="contenttitle">{{ article.getTitle() }}</h1>
 
-  <section id="articlecomment">
-    <h1 id="contenttitle">{{ article.getTitle() }}</h1>
-    <p>{{ article.getContent() | raw }}<p>
-    <p>Catégorie : {{ article.getCategory() }}<p>
-    <small>Créé le : {{ article.getCreatedAt()|date('d/m/Y') }}</small>
-  </section>
+        <p>Catégorie : {{ article.getCategory() }}<p>
+        <small>Créé le : {{ article.getCreatedAt()|date('d/m/Y') }}</small>
+
+        <p>{{ article.getContent() | raw }}<p>
+    </section>
 {% endblock %}

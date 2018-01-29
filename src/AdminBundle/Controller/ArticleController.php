@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\DateTime;
+use FroalaEditor\S3;
 use AdminBundle\Service\FileUploader;
 
 class ArticleController extends Controller
@@ -149,8 +150,35 @@ class ArticleController extends Controller
       ->getForm()
     ;
 
+    // Configuration object.
+    $config = array(
+      // Your server timezone.
+      // Read more on: http://php.net/manual/en/timezones.php.
+      'timezone' => 'Europe/Paris',
+
+      // The name of your bucket.
+      'bucket' => 'blog-brigitte-images',
+
+      // S3 region. If you are using the default us-east-1, it this can be ignored.
+      'region' => 'eu-west-3',
+
+      // The folder where to upload the images.
+      'keyStart' => 'uploads',
+
+      // File access.
+      'acl' => 'public-read',
+
+      // AWS keys.
+      'accessKey' => 'access_key',
+      'secretKey' => 'secret_key'
+    );
+
+    // Compute the signature.
+    $s3Hash = S3::getHash($config);
+
     return $this->render('AdminBundle:Article:edit.html.twig', array(
       'form' => $form->createView(),
+      's3Hash' => S3::getHash($config)
     ));
   }
 
