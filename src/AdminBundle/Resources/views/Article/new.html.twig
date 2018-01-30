@@ -1,13 +1,16 @@
-{% extends "AdminBundle:Article:layout.html.twig" %}
+{% extends "admin.html.twig" %}
 
 {% block body %}
-    <h2 id="edit"><i class="fa fa-pencil"></i>Création d'un article</h2>
+    <h2 id="edit">
+        <i class="fa fa-pencil"></i>
+        Création d'un article
+    </h2>
 
-  <div class="well">
-    {{ form(form)|trans|raw }}
-  </div>
+    <div class="well">
+        {{ form(form) | trans | raw }}
+    </div>
+{% endblock %}
 
-
-<script> $(function() { $('textarea').froalaEditor() }); </script>
-
+{% block javascripts %}
+    <script> $(function() { $('textarea').froalaEditor() }); </script>
 {% endblock %}

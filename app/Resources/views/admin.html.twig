@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/normalize.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster+Two" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/js/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css') }}"  media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/js/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css') }}"  media="screen" />
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{{ url('admin_homepage') }}">Brigitte Joseph-Jeanneney</a>
+                    </div>
+
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="{{ url('admin_homepage') }}">Mes articles</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('admin_new_article') }}">Création d'un nouvel article</a>
+                        </li>
+                        <li>
+                            <a href="#">?</a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{{ url('login') }}"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <body>
+            {% block body %}
+            {% endblock %}
+        </body>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ asset('assets/admin/js/confirm.js') }}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/froala_editor.pkgd.min.js"></script>
+
+        {% block javascripts %}
+            <!-- Page-specific javascript goes here -->
+        {% endblock %}
+    </body>
+</html>
