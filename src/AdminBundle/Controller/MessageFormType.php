@@ -11,7 +11,8 @@ class MessageFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('recipient', 'FOS\UserBundle\Form\Type\UsernameFormType');
+      //Création du formulaire pour se connecter à l'application
+      $builder->add('recipient', 'FOS\UserBundle\Form\Type\UsernameFormType');
 
     }
 }

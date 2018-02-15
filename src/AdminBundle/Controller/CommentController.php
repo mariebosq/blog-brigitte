@@ -7,7 +7,6 @@ use AdminBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
 use Symfony\Component\Debug\Debug;
 
 
@@ -25,6 +24,7 @@ class CommentController extends Controller
 
     $em = $this->getDoctrine()->getManager();
 
+    //On récupère 10 commentaires par page
     $comments = $em->getRepository('AdminBundle:Comment')
         ->findAllPagineEtTrie($page, 10);
 

@@ -29,6 +29,7 @@ class ArticleController extends Controller
 
       $em = $this->getDoctrine()->getManager();
 
+      //On récupère 10 articles par page
       $articles = $em->getRepository('AdminBundle:Article')
           ->findAllPagineEtTrie($page, 10);
 
@@ -78,13 +79,12 @@ class ArticleController extends Controller
     $article->setCreatedAt($now);
 
     // On fait le lien Requête <-> Formulaire
-    // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
+    // À partir de maintenant, la variable $request contient les valeurs entrées dans le formulaire par le visiteur
     $form->handleRequest($request);
 
     // On vérifie que les valeurs entrées sont correctes
-    // (Nous verrons la validation des objets en détail dans le prochain chapitre)
     if ($form->isValid()) {
-      // On enregistre notre objet $advert dans la base de données, par exemple
+      // On enregistre notre objet $request dans la base de données
       $em = $this->getDoctrine()->getManager();
       $em->persist($article);
       $em->flush();
@@ -117,9 +117,6 @@ class ArticleController extends Controller
         ->getForm()
       ;
 
-      // À ce stade, le formulaire n'est pas valide car :
-      // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
-      // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
       return $this->render('AdminBundle:Article:new.html.twig', array(
         'form' => $form->createView(),
       ));
@@ -144,7 +141,7 @@ class ArticleController extends Controller
         )
       ))
       ->add('title',        TextType::class)
-      ->add('content',   TextareaType::class)
+      ->add('content',      TextareaType::class)
       ->add('save',         SubmitType::class)
       ->getForm()
     ;
@@ -156,21 +153,25 @@ class ArticleController extends Controller
 
   public function updateAction($id, Request $request)
   {
+    //On récupère l'article à partir de son id
     $em = $this->getDoctrine()->getEntityManager();
-    $article= $em->getRepository('AdminBundle:Article')->find($id);
+    $article = $em->getRepository('AdminBundle:Article')->find($id);
 
+    //On récupère les nouvelles infos rentrées par l'utilisateur
     $article->setTitle($request->request->get('form')['title']);
     $article->setContent($request->request->get('form')['content']);
 
+    //Et on l'envoie dans la bdd
     $em->flush();
 
+    //On redirige l'utilisateur sur la page d'acceuil
     return $this->redirectToRoute('admin_homepage');
   }
 
   public function publishAction($id, Request $request)
   {
     $em = $this->getDoctrine()->getEntityManager();
-    $article= $em->getRepository('AdminBundle:Article')->find($id);
+    $article = $em->getRepository('AdminBundle:Article')->find($id);
 
     $now = new \DateTime();
     $article->setPublishedAt($now);
@@ -183,13 +184,13 @@ class ArticleController extends Controller
 
   public function deleteAction($id)
   {
-      $em = $this->getDoctrine()->getEntityManager();
-      $article = $em->getRepository('AdminBundle:Article')->find($id);
+    $em = $this->getDoctrine()->getEntityManager();
+    $article = $em->getRepository('AdminBundle:Article')->find($id);
 
-      $em->remove($article);
-      $em->flush();
+    $em->remove($article);
+    $em->flush();
 
-      return $this->redirectToRoute('admin_homepage');
+    return $this->redirectToRoute('admin_homepage');
   }
 
   public function depublishAction($id, Request $request)
