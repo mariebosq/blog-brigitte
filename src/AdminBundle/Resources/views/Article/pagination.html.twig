@@ -1,5 +1,5 @@
   {% if pagination.nbPages > 0 %}
-      <ul class="pagination">
+      <ul id="pages" class="pagination">
           {% if pagination.page > 1 %}
               <li>
                   <a href="{{ path(pagination.nomRoute, pagination.paramsRoute|merge({'page': 1})) }}">
