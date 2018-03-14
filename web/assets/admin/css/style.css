@@ -51,3 +51,9 @@ label {
 li#validcom {
   color: red;
 }
+
+/*PAGINATION*/
+ul#pages {
+  display: flex;
+  justify-content: center;
+}

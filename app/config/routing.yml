@@ -4,7 +4,7 @@ admin:
 
 home:
     resource: "@HomeBundle/Resources/config/routing.yml"
-    prefix:   /home
+    prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
