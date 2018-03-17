@@ -1,5 +1,9 @@
 {% extends "admin.html.twig" %}
 
+{% block js %}
+    <script type="text/javascript" src="{{ asset('assets/admin/js/confirm.js') }}"></script>
+{% endblock %}
+
 {% block body %}
   {% if listArticles is not empty %}
 
