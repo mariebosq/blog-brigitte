@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\DateTime;
 use AdminBundle\Service\FileUploader;
+use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 class ArticleController extends Controller
 {
@@ -71,8 +72,8 @@ class ArticleController extends Controller
         )
       ))
       ->add('title',     TextType::class)
-      ->add('content',   TextareaType::class)
       ->add('save',      SubmitType::class)
+      ->add('content',   FroalaEditorType::class)
       ->getForm()
     ;
     $now = new \DateTime();
@@ -112,7 +113,7 @@ class ArticleController extends Controller
           )
         ))
         ->add('title',     TextType::class)
-        ->add('content',   TextareaType::class)
+        ->add('content',   FroalaEditorType::class)
         ->add('save',      SubmitType::class)
         ->getForm()
       ;
@@ -141,7 +142,7 @@ class ArticleController extends Controller
         )
       ))
       ->add('title',        TextType::class)
-      ->add('content',      TextareaType::class)
+      ->add('content',      FroalaEditorType::class)
       ->add('save',         SubmitType::class)
       ->getForm()
     ;

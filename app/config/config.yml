@@ -98,3 +98,16 @@ fos_user:
             from_email:
                 address:        noreply@gmail.com
                 sender_name:    Demo Resetting
+
+kms_froala_editor:
+  language: "fr"
+
+  # The file upload folder in your /web directory.
+  # Default: "/upload".
+  # fileUploadFolder: "/images"
+
+  # The file upload URL base.
+  # Usage: if you are using URL rewritting for your assets.
+  # Default: same value as provided as folder.
+  # fileUploadPath: "/my/upload/path"
+  pluginsEnabled: [ "image", "file" ]
